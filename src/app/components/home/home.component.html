@@ -1,0 +1,58 @@
+<!-- Navbar Start -->
+<app-simple-navbar></app-simple-navbar>
+<!-- Navbar End -->
+<br><br><br><br><br><br>
+<app-simple-slide></app-simple-slide>
+<div class="row col-md-12 mt-5 mb-5 container">
+  <div class="col-md-12 text-center mb-5">
+    <h1>Bienvenue, découvrez les differentes catégories de livres de notre bibliothèque</h1>
+
+  </div>
+  <div class="col-md-1"></div>
+  <!--Loading-->
+  <div class="row col-md-12">
+    <div class="col md-5">
+    </div>
+    <div class="col md-7">
+      <span *ngIf="loadcategories === true" class="spinner-border spinner-border-sm" role="status"
+        aria-hidden="true"></span>
+    </div>
+  </div>
+  <!--Loading-->
+  <div class="col-md-1"></div>
+  <div class="row col-md-10 users-card" *ngIf="!isEmpty && totalRecords > 0">
+    <div class="col-lg-6 col-xl-3 col-md-6 col-sm-6" *ngFor="let categorie of categories | slice:0:4; let i=index">
+      <div class="card rounded-card user-card">
+        <div class="card-block">
+          <div class="img-hover">
+            <img class="img-fluid img-radius" src="assets/images/user-card/img-round1.jpg" alt="round-img">
+            <div class="img-overlay img-radius">
+              <span>
+                <a href="#" class="btn btn-sm btn-primary" data-popup="lightbox"><i
+                    class="icofont icofont-plus"></i></a>
+                <a href="" class="btn btn-sm btn-primary"><i class="icofont icofont-link-alt"></i></a>
+              </span>
+            </div>
+          </div>
+          <div class="user-content">
+            <h4 class="">{{categorie.libelle}}</h4>
+            <p class="m-b-0 text-muted">Livres: <label class="label label-danger">{{categorie.livreList.length}}</label>
+            </p>
+          </div>
+          <ul class="icons-list mt-15">
+            <li><a href="#" data-popup="tooltip" data-original-title="Google Drive"><i
+                  class="icon-google-drive"></i></a></li>
+            <li><a href="#" data-popup="tooltip" data-original-title="Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a href="#" data-popup="tooltip" data-original-title="Github"><i class="icon-github"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-12 text-center mb-5">
+    <a class="btn btn-inverse" [routerLink]="['/components/livres']"><i class="icofont icofont-eye-alt"></i>Voir
+      plus</a>
+  </div>
+  <div class="col-md-1"></div>
+</div>

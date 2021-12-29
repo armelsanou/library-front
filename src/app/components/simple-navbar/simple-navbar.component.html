@@ -1,0 +1,128 @@
+
+<div class="pcoded" [attr.nav-type]="navType" [attr.theme-layout]="themeLayout" [attr.layout-type]="layoutType"
+[attr.vertical-placement]="verticalPlacement" [attr.vertical-layout]="verticalLayout"
+[attr.pcoded-device-type]="deviceType" [attr.vertical-nav-type]="verticalNavType"
+[attr.vertical-effect]="verticalEffect" [attr.vnavigation-view]="vNavigationView" (window:resize)="onResize($event)">
+<div class="pcoded-overlay-box"></div>
+<div class="pcoded-container navbar-wrapper">
+    <nav class="navbar header-navbar pcoded-header" [attr.pcoded-header-position]="pcodedHeaderPosition"
+        [attr.header-theme]="headerTheme">
+        <div class="navbar-wrapper">
+            <div class="navbar-logo" [attr.logo-theme]="logoTheme">
+                <a [routerLink]="['/components/home']">
+                    <img class="img-fluid logo-img" src="assets/images/logo_upac.jpg" alt="Theme-Logo"
+                        title="retour à l'accueil" />
+                </a>
+                <a (click)="onMobileMenu()" class="mobile-options">
+                    <i class="ti-more"></i>
+                </a>
+            </div>
+
+            <div class="navbar-container">
+                <div>
+                    <ul [@mobileMenuTop]="isCollapsedMobile" class="nav-right" [ngClass]="isCollapsedMobile">
+                        <li class="header-notification lng-dropdown">
+                            <a href="javascript:;" id="dropdown-active-item">
+                                <img src="assets/images/flags/ENGLISH.jpg" alt=""> English
+                            </a>
+                            <ul class="show-notification">
+                                <li>
+                                    <a href="javascript:;" data-lng="en">
+                                        <img src="assets/images/flags/ENGLISH.jpg" alt=""> English
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" data-lng="fr">
+                                        <img src="assets/images/flags/FRANCE.jpg" alt=""> French
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="header-notification">
+                            <a [routerLink]="['/components/abonnement']" href="javascript:;" id="dropdown-active-item">
+                                Abonnements
+                            </a>
+                        </li>
+                        <!-- <li class="header-notification">
+                            <a href="javascript:;">
+                                <i class="ti-bell"></i>
+                                <span class="badge bg-c-pink"></span>
+                            </a>
+                            <ul class="show-notification">
+                                <li>
+                                    <h6>Notifications</h6>
+                                    <label class="label label-danger">New</label>
+                                </li>
+                                <li>
+                                    <div class="media">
+                                        <img class="d-flex align-self-center img-radius" src="assets/images/avatar-2.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="notification-user">John Doe</h5>
+                                            <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.
+                                            </p>
+                                            <span class="notification-time">30 minutes ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="media">
+                                        <img class="d-flex align-self-center img-radius" src="assets/images/avatar-3.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="notification-user">Joseph William</h5>
+                                            <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.
+                                            </p>
+                                            <span class="notification-time">30 minutes ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="media">
+                                        <img class="d-flex align-self-center img-radius" src="assets/images/avatar-5.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="notification-user">Sara Soudein</h5>
+                                            <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.
+                                            </p>
+                                            <span class="notification-time">30 minutes ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li> -->
+                        <li class="user-profile header-notification">
+                            <a>
+                                <img src="assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+
+                                <span *ngIf="!user">Se connecter</span>
+                                <span *ngIf="user">
+                                    <span class="badge bg-c-green"></span> {{user.email}}
+                                </span>
+                                <i class="ti-angle-down"></i>
+                            </a>
+                            <ul class="show-notification profile-notification">
+                                <li *ngIf="user && user.role === 'bibliothecaire' ">
+                                    <a [routerLink]="['/gestion-bibliotheque/categories']">
+                                        <i class="ti-settings"></i> Settings
+                                    </a>
+                                </li>
+                                <li *ngIf="user">
+                                    <a [routerLink]="['/components/my-profile']">
+                                        <i class="ti-user"></i> Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="" (click)="onActionBtnClick()">
+                                        <i class="ti-layout-sidebar-left"></i> {{action}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+</div>

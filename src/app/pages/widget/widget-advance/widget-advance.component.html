@@ -1,0 +1,783 @@
+<div class="row">
+  <!-- Total Value Start -->
+  <div class="col-md-6 col-xl-3">
+    <div class="card card-blue total-card">
+      <div class="card-block">
+        <div class="text-left">
+          <h4>4000</h4>
+          <p class="m-0">Total Sales</p>
+        </div>
+        <span class="label bg-c-blue value-badges">12%</span>
+      </div>
+      <chart [type]="'line'" [data]="totalValueGraphData1" [options]="totalValueGraphOption" style="width: 100%; height: 100px;"></chart>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-3">
+    <div class="card card-pink total-card">
+      <div class="card-block">
+        <div class="text-left">
+          <h4>489</h4>
+          <p class="m-0">Total Comment</p>
+        </div>
+        <span class="label bg-c-pink value-badges">15%</span>
+      </div>
+      <chart [type]="'line'" [data]="totalValueGraphData2" [options]="totalValueGraphOption" style="width: 100%; height: 100px;"></chart>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-3">
+    <div class="card card-green total-card">
+      <div class="card-block">
+        <div class="text-left">
+          <h4>$5782</h4>
+          <p class="m-0">Income Status</p>
+        </div>
+        <span class="label bg-c-green value-badges">20%</span>
+      </div>
+      <chart [type]="'line'" [data]="totalValueGraphData3" [options]="totalValueGraphOption" style="width: 100%; height: 100px;"></chart>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-3">
+    <div class="card card-yellow total-card">
+      <div class="card-block">
+        <div class="text-left">
+          <h4>378</h4>
+          <p class="m-0">Total Visitors</p>
+        </div>
+        <span class="label bg-c-yellow value-badges">23%</span>
+      </div>
+      <chart [type]="'bar'" [data]="totalValueGraphData4" [options]="totalValueGraphOption" style="width: 100%; height: 100px;"></chart>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card bg-c-blue in-design-card">
+      <div class="card-block p-b-10">
+        <p class="f-w-600 m-b-5">In design</p>
+        <h4 class="f-16 m-b-20">AFSL Web app</h4>
+        <div class="inner-dark-card blue-drak-card">
+          <div class="row">
+            <div class="col-sm-6 b-r-default">
+              <h3 class="d-inline-block num-top">11</h3>
+              <p class="text-uppercase d-inline-block">Days Left <br>
+                in Design
+              </p>
+            </div>
+            <div class="col-sm-6">
+              <h3 class="d-inline-block m-r-20 m-b-0 num-top">28</h3>
+              <p class="text-uppercase d-inline-block">Days to <br>
+                Finish
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="f-right">
+          <chart [type]="'line'" [data]="designGraph1" [options]="designGraphOption" style="width: 150px; height: 60px;"></chart>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card bg-c-pink in-design-card">
+      <div class="card-block p-b-10">
+        <p class="f-w-600 m-b-5">In design</p>
+        <h4 class="f-16 m-b-20">Nortech website</h4>
+        <div class="inner-dark-card pink-drak-card">
+          <div class="row">
+            <div class="col-sm-6 b-r-default">
+              <h3 class="d-inline-block num-top">11</h3>
+              <p class="text-uppercase d-inline-block">Days Left <br>
+                in Design
+              </p>
+            </div>
+            <div class="col-sm-6">
+              <h3 class="d-inline-block m-r-20 m-b-0 num-top">28</h3>
+              <p class="text-uppercase d-inline-block">Days to <br>
+                Finish
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="f-right">
+          <chart [type]="'line'" [data]="designGraph2" [options]="designGraphOption" style="width: 150px; height: 60px;"></chart>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 col-xl-4">
+    <div class="card bg-c-yellow in-design-card">
+      <div class="card-block p-b-10">
+        <p class="text-uppercase f-w-600 m-b-5">In Design</p>
+        <h4 class="f-16 m-b-20">Evolution Website</h4>
+        <div class="inner-dark-card yellow-drak-card">
+          <div class="row">
+            <div class="col-sm-6 b-r-default">
+              <h3 class="d-inline-block num-top">11</h3>
+              <p class="text-uppercase d-inline-block">Days Left <br>
+                in Design
+              </p>
+            </div>
+            <div class="col-sm-6">
+              <h3 class="d-inline-block m-r-20 m-b-0 num-top">28</h3>
+              <p class="text-uppercase d-inline-block">Days to <br>
+                Finish
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="f-right">
+          <chart [type]="'line'" [data]="designGraph3" [options]="designGraphOption" style="width: 150px; height: 60px;"></chart>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- In Design End -->
+  <!-- Order Start -->
+  <div class="col-md-12 col-xl-4">
+    <div class="card order-task">
+      <div class="card-block order-blue-task">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="order-icon m-b-40">
+              <i class="icofont icofont-tasks text-c-blue f-50"></i>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-12">
+                <h2 class="f-w-600 text-right m-b-30">4,678</h2>
+              </div>
+              <div class="col-sm-12">
+                <chart [type]="'line'" [data]="orderCardChart1" [options]="orderCardChartOption" style="width: 100%; height: 100px;"></chart>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border-top-blue p-t-20">
+          <h6 class="text-muted">Order submitted</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card order-task">
+      <div class="card-block order-pink-task">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="order-icon m-b-40">
+              <i class="icofont icofont-paper text-c-pink f-50"></i>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-12">
+                <h2 class="f-w-600 text-right m-b-30">4,678</h2>
+              </div>
+              <div class="col-sm-12">
+                <chart [type]="'line'" [data]="orderCardChart2" [options]="orderCardChartOption" style="width: 100%; height: 100px;"></chart>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border-top-pink p-t-20">
+          <h6 class="text-muted">Order contract</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card order-task">
+      <div class="card-block order-yellow-task">
+        <div class="row">
+          <div class="col-sm-6 ">
+            <div class="order-icon m-b-40">
+              <i class="icofont icofont-clip-board text-c-yellow f-50"></i>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-12">
+                <h2 class="f-w-600 text-right m-b-30">4,678</h2>
+              </div>
+              <div class="col-sm-12">
+                <chart [type]="'line'" [data]="orderCardChart3" [options]="orderCardChartOption" style="width: 100%; height: 100px;"></chart>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border-top-yellow p-t-20">
+          <h6 class="text-muted">Order completed</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Order End -->
+  <!-- Statistics and revenue Start -->
+  <div class="col-md-12 ">
+    <app-card [title]="'Statistics of visits and total revenue'" [cardClass]="'card-statistics'">
+      <div class="row ">
+        <div class="col-sm-4 ">
+          <div class="row stats-block">
+            <div class="col-lg-6 ">
+              <div class="progressbar-v-1 text-center">
+                <div data-label="90%" class="radial-bar radial-bar-90 radial-bar-lg"></div>
+              </div>
+            </div>
+            <div class="col-lg-6 ">
+              <h2 class="f-w-600 ">5,879</h2>
+              <p class="text-muted">Total users</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 ">
+          <div class="row stats-block">
+            <div class="col-lg-6 ">
+              <div class="progressbar-v-1 text-center">
+                <div data-label="70%" class="radial-bar radial-bar-70 radial-bar-lg radial-bar-danger"></div>
+              </div>
+            </div>
+            <div class="col-lg-6 ">
+              <h2 class="f-w-600 ">$2,456</h2>
+              <p class="text-muted ">Total rent</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 ">
+          <div class="row stats-block">
+            <div class="col-lg-6 ">
+              <div class="progressbar-v-1 text-center">
+                <div data-label="75%" class="radial-bar radial-bar-75 radial-bar-lg radial-bar-warning"></div>
+              </div>
+            </div>
+            <div class="col-lg-6 ">
+              <h2 class="f-w-600 ">3,198</h2>
+              <p class="text-muted ">Total revenue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="b-t-default p-t-20 m-t-30">
+        <div class="row ">
+          <div class="col-sm-4 ">
+            <h6 class="d-inline-block m-r-10 ">User growth</h6>
+            <span class="label bg-c-blue ">28%</span>
+          </div>
+          <div class="col-sm-4 ">
+            <h6 class="d-inline-block m-r-10 ">Earnning growth</h6>
+            <span class="label bg-c-pink ">12%</span>
+          </div>
+          <div class="col-sm-4 ">
+            <h6 class="d-inline-block m-r-10 ">Trade growth</h6>
+            <span class="label bg-c-yellow ">56%</span>
+          </div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+  <!-- Statistics and revenue End -->
+  <!-- Power card Start -->
+  <div class="col-md-6 col-xl-4">
+    <div class="card">
+      <div class="card-header p-t-20">
+        <div class="card-header-left">
+          <h5>Power</h5>
+        </div>
+        <div class="card-header-right">
+          <i class="icofont icofont-spinner-alt-5 "></i>
+        </div>
+      </div>
+      <div class="card-block-big card-power">
+        <h2>2789</h2>
+        <span class="text-muted">kw</span>
+        <chart [type]="'line'" [data]="powerCardChart1" [options]="powerCardChartOption" style="width: 100%; height: 107px;"></chart>
+        <div class="row">
+          <div class="col-4">
+            <div class="map-area">
+              <h6 class="m-0">2876</h6>
+              <span>kw</span>
+              <p class="text-muted m-0">month</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="map-area">
+              <h6 class="m-0">234</h6>
+              <span>kw</span>
+              <p class="text-muted m-0">Today</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card">
+      <div class="card-header p-t-20">
+        <div class="card-header-left">
+          <h5>Water</h5>
+        </div>
+        <div class="card-header-right">
+          <i class="icofont icofont-spinner-alt-5 "></i>
+        </div>
+      </div>
+      <div class="card-block-big card-power">
+        <h2>7.3</h2>
+        <span class="text-muted">m3</span>
+        <chart [type]="'line'" [data]="powerCardChart2" [options]="powerCardChartOption" style="width: 100%; height: 107px;"></chart>
+        <div class="row">
+          <div class="col-4">
+            <div class="map-area">
+              <h6 class="m-0">4.5</h6>
+              <span>m3</span>
+              <p class="text-muted m-0">month</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="map-area">
+              <h6 class="m-0">0.5</h6>
+              <span>m3</span>
+              <p class="text-muted m-0">Today</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 col-xl-4">
+    <div class="card">
+      <div class="card-header p-t-20">
+        <div class="card-header-left">
+          <h5>Power</h5>
+        </div>
+        <div class="card-header-right">
+          <i class="icofont icofont-spinner-alt-5 "></i>
+        </div>
+      </div>
+      <div class="card-block-big card-power">
+        <h2>834</h2>
+        <span class="text-muted">mpg</span>
+        <chart [type]="'line'" [data]="powerCardChart3" [options]="powerCardChartOption" style="width: 100%; height: 107px;"></chart>
+        <div class="row">
+          <div class="col-4">
+            <div class="map-area">
+              <h6 class="m-0">15.6</h6>
+              <span>mpg</span>
+              <p class="text-muted m-0">month</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="map-area">
+              <h6 class="m-0">234</h6>
+              <span>kw</span>
+              <p class="text-muted m-0">Today</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Power card End -->
+  <!-- Visitor Chart Start -->
+  <div class="col-md-12">
+    <app-card [title]="'Visitors'" [cardClass]="'visitor-chart-card'" [blockClass]="'p-b-40'">
+      <div id="visitor-list-graph" style="width:100%;height:400px;"></div>
+    </app-card>
+  </div>
+  <!-- Visitor Chart End -->
+  <!-- Client Map Start -->
+  <div class="col-md-6 col-xl-4">
+    <div class="card client-map">
+      <div class="card-block">
+        <div class="client-detail">
+          <div class="client-profile">
+            <img src="assets/images/avatar-1.jpg" alt="">
+          </div>
+          <div class="client-contain">
+            <h5>Gregory Johnes</h5>
+            <a href="javascript:" class="text-muted">gregory@demo.com</a>
+            <p class="text-muted m-0 p-t-10">Product Manager</p>
+          </div>
+        </div>
+        <div class="card-block">
+          <div class="client-card-box">
+            <div class="row">
+              <div class="col-6 text-center client-border p-10">
+                <p class="text-muted m-0">Invites</p>
+                <span class="text-c-blue f-20 f-w-600">345</span>
+              </div>
+              <div class="col-6 text-center p-10">
+                <p class="text-muted m-0">Pending</p>
+                <span class="text-c-blue f-20 f-w-600">12</span>
+              </div>
+            </div>
+            <div class="col-sm-12 client-border-card p-t-10">
+              <p>Overall Activity</p>
+            </div>
+            <chart [type]="'line'" [data]="clientMapChart1" [options]="clientMapChartOption" style="width: 100%; height: 70px;"></chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card client-map">
+      <div class="card-block">
+        <div class="client-detail">
+          <div class="client-profile">
+            <img src="assets/images/widget/user-blur-bg.png" alt="">
+          </div>
+          <div class="client-contain">
+            <h5>Gregory Johnes</h5>
+            <a href="javascript:" class="text-muted">gregory@demo.com</a>
+            <p class="text-muted m-0 p-t-10">Product Manager</p>
+          </div>
+        </div>
+        <div class="card-block">
+          <div class="client-card-box">
+            <div class="row">
+              <div class="col-6 text-center client-border p-10">
+                <p class="text-muted m-0">Invites</p>
+                <span class="text-c-pink f-20 f-w-600">845</span>
+              </div>
+              <div class="col-6 text-center p-10">
+                <p class="text-muted m-0">Pending</p>
+                <span class="text-c-pink f-20 f-w-600">02</span>
+              </div>
+            </div>
+            <div class="col-sm-12 client-border-card p-t-10">
+              <p>Overall Activity</p>
+            </div>
+            <chart [type]="'line'" [data]="clientMapChart2" [options]="clientMapChartOption" style="width: 100%; height: 70px;"></chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 col-xl-4">
+    <div class="card client-map">
+      <div class="card-block">
+        <div class="client-detail">
+          <div class="client-profile">
+            <img src="assets/images/avatar-1.jpg" alt="">
+          </div>
+          <div class="client-contain">
+            <h5>Gregory Johnes</h5>
+            <a href="javascript:" class="text-muted">gregory@demo.com</a>
+            <p class="text-muted m-0 p-t-10">Product Manager</p>
+          </div>
+        </div>
+        <div class="card-block">
+          <div class="client-card-box">
+            <div class="row">
+              <div class="col-6 text-center client-border p-10">
+                <p class="text-muted m-0">Invites</p>
+                <span class="text-c-green f-20 f-w-600">812</span>
+              </div>
+              <div class="col-6 text-center p-10">
+                <p class="text-muted m-0">Pending</p>
+                <span class="text-c-green f-20 f-w-600">00</span>
+              </div>
+            </div>
+            <div class="col-sm-12 client-border-card p-t-10">
+              <p>Overall Activity</p>
+            </div>
+            <chart [type]="'line'" [data]="clientMapChart3" [options]="clientMapChartOption" style="width: 100%; height: 70px;"></chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Client Map End -->
+  <!-- Sales Statestics Start -->
+  <div class="col-md-12">
+    <div class="card sales-menu-card">
+      <div class="card-header ">
+        <div class="card-header-left ">
+          <h5>Sales statestics</h5>
+        </div>
+        <div class="card-header-right">
+          <i class="icofont icofont-spinner-alt-5 "></i>
+        </div>
+      </div>
+      <div class="card-block">
+        <div class="row valign-wrapper">
+          <div class="col-sm-9">
+            <div id="area-custom" style=" height:200px;"></div>
+          </div>
+          <div class="col-sm-3">
+            <i class="icofont icofont-social-opencart text-c-blue f-40 sales-icon m-r-20"></i>
+            <div class="sales-contain d-inline-block">
+              <h2 class="f-w-600">$27,672</h2>
+              <p class="f-w-600 text-muted f-16">Total sales</p>
+            </div>
+          </div>
+        </div>
+        <div class="row valign-wrapper">
+          <div class="col-sm-9">
+            <div id="area-custom-2" style=" height:200px;"></div>
+          </div>
+          <div class="col-sm-3">
+            <i class="icofont icofont-cart-alt text-c-pink f-40 sales-icon m-r-20"></i>
+            <div class="sales-contain d-inline-block">
+              <h2 class="f-w-600">56%</h2>
+              <p class="f-w-600 text-muted f-16">Progress</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sales Statestics End -->
+  <!-- Serve & Plan Start -->
+  <div class="col-md-12 col-xl-8">
+    <app-card [title]="'Servey'" [cardClass]="'serve-card'">
+      <div class="serve-text d-inline-block p-b-10">
+        <h2 class="d-inline-block m-r-15 f-w-600">839</h2>
+        <i class="icofont icofont-caret-down text-c-green f-20 "></i>
+      </div>
+      <div class="serve-text f-right">
+        <h4 class="d-inline-block m-r-15 f-18 text-muted">Week</h4>
+        <i class="icofont icofont-caret-down text-c-green f-20 "></i>
+      </div>
+      <h4 class="text-muted">Responded <span
+        class="text-c-green">+40 </span>this week</h4>
+      <div class="row serve-chart-list">
+        <div class="col-sm-4">
+          <h6 class="p-b-10">Peak Zone</h6>
+          <h6>Average Zone</h6>
+        </div>
+        <div class="col-sm-8">
+          <div id="Servey-chart" style="height:210px;width:100%"></div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+  <!-- Serve & Plan End -->
+  <!-- Contact Menu Start -->
+  <div class="col-md-12 col-xl-4">
+    <app-card [title]="'Servey'" [cardClass]="'invite-card'" [blockClass]="'text-center'">
+      <div class="invite-card-chart">
+        <div id="solid-gauge1" style="height:250px;"></div>
+        <div class="invite-card-cont">
+          <i class="icofont icofont-paper-plane text-c-green"></i>
+          <span class="f-50">391</span>
+          <hr>
+        </div>
+      </div>
+      <h6 class="f-w-600">You are on track!</h6>
+      <p class="text-muted m-b-0">You are close to your 528 invites
+        goal
+      </p>
+    </app-card>
+  </div>
+  <!-- Contact Menu End -->
+  <!-- Visitor Map Start -->
+  <div class="col-md-12 col-xl-6">
+    <div class="card card-chart o-hidden">
+      <div class="card-block">
+        <h2 class="f-w-600 m-b-15">43,678K</h2>
+        <h5>Daily income</h5>
+        <h6 class="text-muted d-inline-block card-chart-right f-w-600"><i class="icofont icofont-long-arrow-up f-20 f-w-600"></i>34%</h6>
+      </div>
+      <div id="realtimeupdate"></div>
+    </div>
+  </div>
+  <div class="col-md-12 col-xl-6">
+    <app-card [title]="'Fees collection'" [blockClass]="'fees-card'">
+      <div class="row">
+        <div class="col-sm-4">
+          <ul class="list-unstyled">
+            <li>
+              <div class="legend-icon">
+                <span class="bg-c-blue"></span>
+              </div>
+              <div class="legend-cont">
+                <p>$4,025</p>
+                <span>Collection</span>
+              </div>
+            </li>
+            <li>
+              <div class="legend-icon">
+                <span class="bg-c-pink"></span>
+              </div>
+              <div class="legend-cont">
+                <p>$3,782</p>
+                <span>Fees</span>
+              </div>
+            </li>
+            <li>
+              <div class="legend-icon">
+                <span class="bg-c-yellow"></span>
+              </div>
+              <div class="legend-cont">
+                <p>$3,586</p>
+                <span>Expence</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-8">
+          <div id="fees-collection" style="max-width:100%;height:200px;"></div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+  <!-- Visitor Map End -->
+  <!-- Website Start -->
+  <div class="col-md-6 col-xl-6">
+    <app-card [title]="'Website traffic'" [blockClass]="'web-trafic p-t-0'">
+      <div class="row">
+        <div class="col-sm-5">
+          <div id="website-traffic" style="height:150px"></div>
+        </div>
+        <div class="col-sm-7">
+          <ul class="list-unstyled">
+            <li>
+              <div class="legend-icon">
+                <span class="bg-c-blue"></span>
+              </div>
+              <div class="legend-cont">
+                <p>Bounce</p>
+                <span>2834</span>
+              </div>
+            </li>
+            <li>
+              <div class="legend-icon">
+                <span class="bg-c-pink"></span>
+              </div>
+              <div class="legend-cont">
+                <p>Registered</p>
+                <span>1254</span>
+              </div>
+            </li>
+            <li>
+              <div class="legend-icon">
+                <span class="bg-c-yellow"></span>
+              </div>
+              <div class="legend-cont">
+                <p>Visitors</p>
+                <span>4623</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-md-12 col-xl-6">
+    <app-card [title]="'Stock price'" [blockClass]="'p-t-0 p-b-0'">
+      <div class="row">
+        <div class="col-sm-7">
+          <p class="text-muted">Lorem Ipsum is simply dummy text of
+            the printing and typesetting industry. Lorem Ipsum has
+            been the industry's standard dummy.
+          </p>
+        </div>
+        <div class="col-sm-5">
+          <chart [type]="'line'" [data]="StockProceChartData" [options]="StockProceChartOption" style="width:100%;height:150px;"></chart>
+        </div>
+      </div>
+    </app-card>
+  </div>
+  <!-- Website End -->
+  <!-- Statetics Start -->
+  <div class="col-sm-12">
+    <app-card [title]="'Statetics'" [cardClass]="'statetic-card'">
+      <h6 class="text-muted f-18 ">Total</h6>
+      <h4 class="f-w-600 ">$4,567.56</h4>
+      <div class="m-b-30 m-t-30">
+        <div id="statetics-graph1" style="height: 350px"></div>
+      </div>
+      <div class="row ">
+        <div class="col">
+          <i class="icofont icofont-bow f-40 text-c-blue icon-stat"></i>
+          <div class="d-inline-block ">
+            <p class="text-muted m-l-20 m-b-5 f-w-600 ">Purchase</p>
+            <h4 class=" m-l-20 m-b-0 f-w-600 ">23,452 </h4>
+          </div>
+        </div>
+        <div class="col d-inline-block">
+          <div id="statetics-purchase1" style="height: 80px"></div>
+        </div>
+        <div class="col">
+          <i class="icofont icofont-wallet f-40 text-c-green icon-stat"></i>
+          <div class="d-inline-block ">
+            <p class="text-muted m-l-20 m-b-5 f-w-600 ">Rate</p>
+            <h4 class=" m-l-20 m-b-0 f-w-600 ">12.45% </h4>
+          </div>
+        </div>
+        <div class="col d-inline-block">
+          <div id="statetics-rate1" style="height: 80px"></div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+  <!-- Statetics End -->
+  <!-- Visitor Start -->
+  <div class="col-md-12 col-xl-6">
+    <app-card [title]="'Customers'" [cardClass]="'customer-card'">
+      <h3 class="text-center">284,123</h3>
+      <div id="line-example" style="height:350px;"></div>
+    </app-card>
+  </div>
+  <div class="col-md-12 col-xl-6">
+    <app-card [title]="'Visitors'" [cardClass]="'visitor-map'">
+      <div id="visitor-graph" class="visitor-graph"></div>
+    </app-card>
+  </div>
+  <!-- Visitor End -->
+  <!-- Summery Start -->
+  <div class="col-md-12 col-xl-6">
+    <app-card [title]="'Summery'" [cardClass]="'summery-card'">
+      <div class="row">
+        <div class="col-sm-6 b-r-default p-b-40">
+          <h2 class="f-w-600">13</h2>
+          <p class="text-muted f-w-600">Active users</p>
+          <div class="progress">
+            <div class="progress-bar bg-c-blue" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="100"
+                 style="width:50%">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 p-b-40">
+          <h2 class="f-w-600">28</h2>
+          <p class="text-muted f-w-600">Completed task</p>
+          <div class="progress">
+            <div class="progress-bar bg-c-pink" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="100"
+                 style="width:50%">
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-6">
+          <chart [type]="'line'" [data]="summaryChartData" [options]="summaryChartOption" style="height: 80px;"></chart>
+        </div>
+        <div class="col-sm-6">
+          <h2 class="f-w-600">76</h2>
+          <p class="text-muted f-w-600">Open task</p>
+          <div class="progress">
+            <div class="progress-bar bg-c-green" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+            </div>
+          </div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+  <!-- summary end -->
+  <!-- Tasks Sale Start -->
+  <div class="col-md-12 col-xl-6 ">
+    <div class="card bg-c-pink week-sales-card ">
+      <div class="card-header ">
+        <div class="card-header-left ">
+          <h5>Last week sales</h5>
+        </div>
+        <div class="card-header-right">
+          <i class="icofont icofont-spinner-alt-5"></i>
+        </div>
+      </div>
+      <div id="last-week-sales" class="last-week-sales"></div>
+    </div>
+  </div>
+  <!-- Tasks Sale End -->
+</div>

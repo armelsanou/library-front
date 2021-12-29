@@ -1,0 +1,705 @@
+<!-- Navbar Start -->
+<app-simple-navbar></app-simple-navbar>
+<!-- Navbar End -->
+
+<br><br><br><br><br><br>
+
+<div class="main-body container col-md-12">
+    <div class="page-wrapper">
+        <app-title></app-title>
+        <app-breadcrumbs></app-breadcrumbs>
+    </div>
+</div>
+
+<div class="row main-body container col-md-12">
+
+    <div class="col-md-2"></div>
+    <!--profile cover start-->
+    <div class="row col-md-9 mb-2">
+        <div class="col-lg-12">
+            <div class="cover-profile">
+                <div class="profile-bg-img">
+                    <img class="profile-bg-img img-fluid" src="assets/images/user-profile/bg-img1.jpg" alt="bg-img">
+                    <div class="card-body user-info">
+                        <div class="col-md-12">
+                            <div class="media-left">
+                                <a href="javascript:;" class="profile-image">
+                                    <img class="user-img img-radius" src="assets/images/widget/group-user.jpg"
+                                        style="height: 108px; width: 108px;" alt="user-img">
+                                </a>
+                            </div>
+                            <div class="media-body row">
+                                <div class="col-lg-12">
+                                    <div class="user-title">
+                                        <h2>{{user?.nom}} {{user?.prenomnom}}</h2>
+                                        <span class="text-white">{{user?.email}}</span>
+                                        <br>
+                                        <span class="text-white">{{user?.role}}</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="pull-right cover-btn">
+                                        <button type="button" class="btn btn-primary m-b-10 m-r-10"><i
+                                                class="icofont icofont-plus"></i>
+                                            Follow</button>
+                                        <button type="button" class="btn btn-primary m-b-10"><i
+                                                class="icofont icofont-ui-messaging"></i>
+                                            Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--profile cover end-->
+    <div class="col-md-2"></div>
+    <div class="row col-md-9 mb-5">
+        <div class="col-lg-12">
+            <div class="md-tabs">
+                <ngb-tabset>
+                    <ngb-tab>
+                        <ng-template ngbTabTitle><i class="icofont icofont-ui-user "></i> Personnal Info</ng-template>
+                        <ng-template ngbTabContent>
+                            <div [@fadeInOutTranslate] class="m-t-15">
+                                <!-- personal card start -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-header-text">My Profile</h5>
+                                        <button id="edit-btn" type="button"
+                                            class="btn btn-sm btn-primary waves-effect waves-light f-right"
+                                            (click)="toggleEditProfile()">
+                                            <i class="icofont {{ editProfileIcon }}"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="view-info" *ngIf="editProfile">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="general-info">
+                                                        <div class="row">
+                                                            <!-- Contact Menu Start -->
+                                                            <div class="col-md-12 col-xl-12 ">
+                                                                <div class="card">
+                                                                    <div class="card-block user-detail-card">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-4">
+                                                                                <img src="assets/images/widget/group-user.jpg "
+                                                                                    alt="" class="img-fluid p-b-10">
+                                                                                <div class="contact-icon">
+                                                                                    <button class="btn btn-default"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="View"><i
+                                                                                            class="icofont icofont-eye m-0"></i></button>
+                                                                                    <button class="btn btn-default"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="Print"><i
+                                                                                            class="icofont icofont-printer m-0"></i></button>
+                                                                                    <button class="btn btn-default"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="Download"><i
+                                                                                            class="icofont icofont-download-alt m-0"></i></button>
+                                                                                    <button class="btn btn-default"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="Share"><i
+                                                                                            class="icofont icofont-share m-0"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-8 user-detail">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-5">
+                                                                                        <h6
+                                                                                            class="text-muted f-w-600 m-b-30">
+                                                                                            <i
+                                                                                                class="icofont icofont-ui-user"></i>Nom
+                                                                                            :</h6>
+                                                                                    </div>
+                                                                                    <div class="col-sm-7">
+                                                                                        <h6 class="m-b-30">{{user?.nom}}
+                                                                                        </h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-5">
+                                                                                        <h6
+                                                                                            class="text-muted f-w-600 m-b-30">
+                                                                                            <i
+                                                                                                class="icofont icofont-ui-user"></i>Prénom
+                                                                                            :</h6>
+                                                                                    </div>
+                                                                                    <div class="col-sm-7">
+                                                                                        <h6 class="m-b-30">
+                                                                                            {{user?.prenom}}</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-5">
+                                                                                        <h6
+                                                                                            class="text-muted f-w-600 m-b-30">
+                                                                                            <i
+                                                                                                class="icofont icofont-ui-email"></i>Email
+                                                                                            :</h6>
+                                                                                    </div>
+                                                                                    <div class="col-sm-7">
+                                                                                        <h6 class="m-b-30"><a
+                                                                                                href="mailto:{{user?.email}}">{{user?.email}}</a>
+                                                                                        </h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-5">
+                                                                                        <h6
+                                                                                            class="text-muted f-w-600 m-b-30">
+                                                                                            <i
+                                                                                                class="icofont icofont-ui-home"></i>Login
+                                                                                            :</h6>
+                                                                                    </div>
+                                                                                    <div class="col-sm-7">
+                                                                                        <h6 class="m-b-30">
+                                                                                            {{user?.login}}</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-5">
+                                                                                        <h6
+                                                                                            class="text-muted f-w-600 m-b-30">
+                                                                                            <i
+                                                                                                class="icofont icofont-ui-touch-phone"></i>Phone
+                                                                                            :</h6>
+                                                                                    </div>
+                                                                                    <div class="col-sm-7">
+                                                                                        <h6 class="m-b-30">
+                                                                                            {{user?.telephone}}</h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="m-t-30 p-r-0 p-l-0 p-t-30">
+                                                                                    <div class="row">
+                                                                                        <div class="col-6 col-md-4"
+                                                                                            *ngIf="emprunts">
+                                                                                            <div class="founder-block">
+                                                                                                <p
+                                                                                                    class="text-muted m-b-5 f-14">
+                                                                                                    <i
+                                                                                                        class="icofont icofont-love text-c-pink m-r-5"></i>Emprunts
+                                                                                                </p>
+                                                                                                <span
+                                                                                                    class="f-20">{{emprunts.length}}</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-6 col-md-4"
+                                                                                            *ngIf="abonnements">
+                                                                                            <div class="founder-block">
+                                                                                                <p
+                                                                                                    class="text-muted m-b-5 f-14">
+                                                                                                    <i
+                                                                                                        class="icofont icofont-users-alt-2 text-c-green m-r-5"></i>Abonnements
+                                                                                                </p>
+                                                                                                <span
+                                                                                                    class="f-20">{{abonnements.length}}</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-6 col-md-4">
+                                                                                            <div class="founder-block">
+                                                                                                <p
+                                                                                                    class="text-muted m-b-5 f-14">
+                                                                                                    <i
+                                                                                                        class="icofont icofont-ui-messaging text-c-yellow m-r-5"></i>Avertissements
+                                                                                                </p>
+                                                                                                <span
+                                                                                                    class="f-20">67</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Contact Menu End -->
+                                                            <!-- end of table col-lg-6 -->
+                                                        </div>
+                                                        <!-- end of row -->
+                                                    </div>
+                                                    <!-- end of general info -->
+                                                </div>
+                                                <!-- end of col-lg-12 -->
+                                            </div>
+                                            <!-- end of row -->
+                                        </div>
+                                        <!-- end of view-info -->
+                                        <div class="edit-info" *ngIf="!editProfile">
+                                            <form [formGroup]="profileForm" class="md-float-material">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="general-info">
+                                                            <div class="row">
+                                                                <!-- Contact Menu Start -->
+                                                                <div class="col-md-12 col-xl-12 ">
+                                                                    <div class="card">
+                                                                        <div class="card-block user-detail-card">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-4">
+                                                                                    <img src="assets/images/widget/group-user.jpg "
+                                                                                        alt="" class="img-fluid p-b-10">
+                                                                                    <div class="contact-icon">
+                                                                                        <button class="btn btn-default"
+                                                                                            data-toggle="tooltip"
+                                                                                            data-placement="bottom"
+                                                                                            title="View"><i
+                                                                                                class="icofont icofont-eye m-0"></i></button>
+                                                                                        <button class="btn btn-default"
+                                                                                            data-toggle="tooltip"
+                                                                                            data-placement="bottom"
+                                                                                            title="Print"><i
+                                                                                                class="icofont icofont-printer m-0"></i></button>
+                                                                                        <button class="btn btn-default"
+                                                                                            data-toggle="tooltip"
+                                                                                            data-placement="bottom"
+                                                                                            title="Download"><i
+                                                                                                class="icofont icofont-download-alt m-0"></i></button>
+                                                                                        <button class="btn btn-default"
+                                                                                            data-toggle="tooltip"
+                                                                                            data-placement="bottom"
+                                                                                            title="Share"><i
+                                                                                                class="icofont icofont-share m-0"></i></button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-8 user-detail">
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-5">
+                                                                                            <h6
+                                                                                                class="text-muted f-w-600 m-b-30">
+                                                                                                <i
+                                                                                                    class="icofont icofont-ui-user"></i>Nom
+                                                                                                :</h6>
+                                                                                        </div>
+                                                                                        <div class="col-sm-7">
+                                                                                            <input type="text"
+                                                                                                formControlName="nom"
+                                                                                                value="{{user?.nom}}"
+                                                                                                class="m-b-30 form-control form-control-sm">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-5">
+                                                                                            <h6
+                                                                                                class="text-muted f-w-600 m-b-30">
+                                                                                                <i
+                                                                                                    class="icofont icofont-ui-user"></i>Prénom
+                                                                                                :</h6>
+                                                                                        </div>
+                                                                                        <div class="col-sm-7">
+                                                                                            <input type="text"
+                                                                                                formControlName="prenom"
+                                                                                                value="{{user?.prenom}}"
+                                                                                                class="m-b-30 form-control form-control-sm">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-5">
+                                                                                            <h6
+                                                                                                class="text-muted f-w-600 m-b-30">
+                                                                                                <i
+                                                                                                    class="icofont icofont-ui-email"></i>Email
+                                                                                                :</h6>
+                                                                                        </div>
+                                                                                        <div class="col-sm-7">
+                                                                                            <input type="email"
+                                                                                                formControlName="email"
+                                                                                                value="{{user?.email}}"
+                                                                                                class="m-b-30 form-control form-control-sm">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-5">
+                                                                                            <h6
+                                                                                                class="text-muted f-w-600 m-b-30">
+                                                                                                <i
+                                                                                                    class="icofont icofont-ui-home"></i>Login
+                                                                                                :</h6>
+                                                                                        </div>
+                                                                                        <div class="col-sm-7">
+                                                                                            <input type="text"
+                                                                                                formControlName="login"
+                                                                                                value="{{user?.login}}"
+                                                                                                class="m-b-30 form-control form-control-sm">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-5">
+                                                                                            <h6
+                                                                                                class="text-muted f-w-600 m-b-30">
+                                                                                                <i
+                                                                                                    class="icofont icofont-ui-touch-phone"></i>Phone
+                                                                                                :</h6>
+                                                                                        </div>
+                                                                                        <div class="col-sm-7">
+                                                                                            <input type="text"
+                                                                                                formControlName="telephone"
+                                                                                                value="{{user?.telephone}}"
+                                                                                                class="m-b-30 form-control form-control-sm">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Contact Menu End -->
+                                                                <!-- end of table col-lg-6 -->
+                                                            </div>
+                                                            <!-- end of row -->
+                                                        </div>
+                                                        <!-- end of general info -->
+                                                    </div>
+                                                    <!-- end of col-lg-12 -->
+                                                </div>
+                                                <div class="text-center">
+                                                    <a href="javascript:;" (click)="update()"
+                                                        class="btn btn-primary btn-sm waves-effect waves-light m-r-20">Save</a>
+                                                    <a href="javascript:;" id="edit-cancel"
+                                                        class="btn btn-danger btn-sm waves-effect"
+                                                        (click)="toggleEditProfile()">Cancel</a>
+                                                </div>
+                                                <!-- end of text-center -->
+                                            </form>
+                                        </div>
+                                        <!-- end of edit-info -->
+                                    </div>
+                                    <!-- end of card-body -->
+                                </div>
+                                <!-- personal card end-->
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Abonnements">
+                        <ng-template ngbTabContent>
+                            <div [@fadeInOutTranslate] class="m-t-15">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <!-- contact data table card start -->
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5 class="card-header-text text-center">Mes Abonnements</h5>
+                                                    </div>
+                                                    <div class="card-body contact-details">
+                                                        <div class="dt-responsive">
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-12 col-sm-12 col-md-6">
+                                                                    <div>
+                                                                        <label class="label-control">Show
+                                                                            <select
+                                                                                class="form-control input-sm full-data-show-entry"
+                                                                                [(ngModel)]="rowsOnPage">
+                                                                                <option [ngValue]="10">10</option>
+                                                                                <option [ngValue]="25">25</option>
+                                                                                <option [ngValue]="50">50</option>
+                                                                                <option [ngValue]="100">100</option>
+                                                                            </select>
+                                                                            entries
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                                                    <div style="text-align: right;">
+                                                                        <label>Search:
+                                                                            <input type="search"
+                                                                                [(ngModel)]="filterQuery"
+                                                                                class="form-control input-sm full-data-search"
+                                                                                placeholder="Search name">
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="panel-heading">User information</div>-->
+                                                            <div class="table-responsive">
+                                                                <table
+                                                                    class="table table-striped table-bordered full-data-table"
+                                                                    [mfData]="abonnements | dataFilter : filterQuery"
+                                                                    #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
+                                                                    [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="name">
+                                                                                    <b>Lecteur</b></mfDefaultSorter>
+                                                                            </th>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="position">
+                                                                                    <b>Forfait</b></mfDefaultSorter>
+                                                                            </th>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="office"><b>Date de
+                                                                                        début</b></mfDefaultSorter>
+                                                                            </th>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="age"><b>Date de
+                                                                                        fin</b></mfDefaultSorter>
+                                                                            </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <ng-container
+                                                                            *ngIf="abonnements && abonnements.length > 0">
+                                                                            <tr *ngFor="let item of mf.data">
+                                                                                <td>{{user.nom}}</td>
+                                                                                <td><label
+                                                                                        class="label label-inverse">{{item.abonnement.libelle}}</label>
+                                                                                </td>
+                                                                                <td>{{item.effectuerabonnementPK.dateDebutAbonnement}}
+                                                                                </td>
+                                                                                <td>{{item.dateFinAbonnement}}</td>
+                                                                            </tr>
+                                                                        </ng-container>
+                                                                        <ng-container
+                                                                            *ngIf="!abonnements || abonnements.length == 0">
+                                                                            <tr>
+                                                                                <td colspan="4">
+                                                                                    <div class="card text-center mt-3">
+                                                                                        <p
+                                                                                            class="mt-5 mb-2 text-danger">
+                                                                                            Aucun abonnement !</p><br>
+                                                                                        <p class="mb-5">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-outline-secondary btn-sm waves-effect f-w-600 d-inline-block">
+                                                                                                <i class="fa fa-refresh
+                                                                                    m-r-5"></i>rafraichir
+                                                                                            </button>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </ng-container>
+                                                                    </tbody>
+                                                                    <tfoot>
+                                                                        <tr>
+                                                                            <td colspan="4">
+                                                                                <mfBootstrapPaginator
+                                                                                    class="pagination-main f-right">
+                                                                                </mfBootstrapPaginator>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tfoot>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- contact data table card end -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Emprunts">
+                        <ng-template ngbTabContent>
+                            <div [@fadeInOutTranslate] class="m-t-15">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <!-- contact data table card start -->
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5 class="card-header-text text-center">Mes Emprunts</h5>
+                                                    </div>
+                                                    <div class="card-body contact-details">
+                                                        <div class="dt-responsive">
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-12 col-sm-12 col-md-6">
+                                                                    <div>
+                                                                        <label class="label-control">Show
+                                                                            <select
+                                                                                class="form-control input-sm full-data-show-entry"
+                                                                                [(ngModel)]="rowsOnPage">
+                                                                                <option [ngValue]="10">10</option>
+                                                                                <option [ngValue]="25">25</option>
+                                                                                <option [ngValue]="50">50</option>
+                                                                                <option [ngValue]="100">100</option>
+                                                                            </select>
+                                                                            entries
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                                                    <div style="text-align: right;">
+                                                                        <label>Search:
+                                                                            <input type="search"
+                                                                                [(ngModel)]="filterQuery"
+                                                                                class="form-control input-sm full-data-search"
+                                                                                placeholder="Search name">
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="panel-heading">User information</div>-->
+                                                            <div class="table-responsive">
+                                                                <table
+                                                                    class="table table-striped table-bordered full-data-table"
+                                                                    [mfData]="emprunts | dataFilter : filterQuery"
+                                                                    #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
+                                                                    [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="name">
+                                                                                    <b>Lecteur</b></mfDefaultSorter>
+                                                                            </th>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="position">
+                                                                                    <b>Livre</b></mfDefaultSorter>
+                                                                            </th>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="position"><b>Etat
+                                                                                        livre</b></mfDefaultSorter>
+                                                                            </th>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="office">
+                                                                                    <b>Categorie</b></mfDefaultSorter>
+                                                                            </th>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="age"><b>Date
+                                                                                        emprunt</b></mfDefaultSorter>
+                                                                            </th>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="start-date"><b>Date
+                                                                                        de retour prévue</b>
+                                                                                </mfDefaultSorter>
+                                                                            </th>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="start-date"><b>Date
+                                                                                        de retour effective</b>
+                                                                                </mfDefaultSorter>
+                                                                            </th>
+                                                                            <th>
+                                                                                <mfDefaultSorter by="salary">Statut
+                                                                                </mfDefaultSorter>
+                                                                            </th>
+                                                                            <th>
+                                                                                <mfDefaultSorter>Action
+                                                                                </mfDefaultSorter>
+                                                                            </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <ng-container
+                                                                            *ngIf="emprunts && emprunts.length > 0">
+                                                                            <tr *ngFor="let item of mf.data">
+                                                                                <td>{{user.nom}}</td>
+                                                                                <td>{{item.livre.isbn}} -
+                                                                                    {{item.livre.titre}}</td>
+                                                                                <td><label
+                                                                                        class="label label-inverse">{{item.livre.idEtatLivre.etat}}</label>
+                                                                                </td>
+                                                                                <td>{{item.livre.idCategorie.libelle}}
+                                                                                </td>
+                                                                                <td>{{item.empruntPK.dateEmprunt}}</td>
+                                                                                <td>{{item.dateRetourTheo}}</td>
+                                                                                <td>{{item?.dateRetourEff || 'pas encore
+                                                                                    rendu'}}</td>
+                                                                                <td>
+                                                                                    <div class="label-main">
+                                                                                        <label
+                                                                                            class="label label-danger"
+                                                                                            *ngIf="!item.dateRetourEff; else nonRenduBlock">Pas
+                                                                                            rendu</label>
+                                                                                        <ng-template #nonRenduBlock>
+                                                                                            <label
+                                                                                                class="label label-success">Rendu</label>
+                                                                                        </ng-template>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td ngbDropdown>
+                                                                                    <button ngbDropdownToggle
+                                                                                        type="button"
+                                                                                        class="btn btn-primary dropdown-toggle"
+                                                                                        data-toggle="dropdown"
+                                                                                        aria-haspopup="true"
+                                                                                        aria-expanded="false"><i
+                                                                                            class="fa fa-cog"
+                                                                                            aria-hidden="true"></i></button>
+                                                                                    <div ngbDropdownMenu
+                                                                                        class="dropdown-menu dropdown-menu-right b-none contact-menu">
+                                                                                        <a class="dropdown-item"
+                                                                                            href="javascript:;"><i
+                                                                                                class="icofont icofont-edit"></i>Edit</a>
+                                                                                        <a class="dropdown-item"
+                                                                                            href="javascript:;"><i
+                                                                                                class="icofont icofont-ui-delete"></i>Delete</a>
+                                                                                        <a class="dropdown-item"
+                                                                                            href="javascript:;"><i
+                                                                                                class="icofont icofont-eye-alt"></i>View</a>
+                                                                                        <a class="dropdown-item"
+                                                                                            href="javascript:;"><i
+                                                                                                class="icofont icofont-tasks-alt"></i>Project</a>
+                                                                                        <a class="dropdown-item"
+                                                                                            href="javascript:;"><i
+                                                                                                class="icofont icofont-ui-note"></i>Notes</a>
+                                                                                        <a class="dropdown-item"
+                                                                                            href="javascript:;"><i
+                                                                                                class="icofont icofont-eye-alt"></i>Activity</a>
+                                                                                        <a class="dropdown-item"
+                                                                                            href="javascript:;"><i
+                                                                                                class="icofont icofont-badge"></i>Schedule</a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </ng-container>
+                                                                        <ng-container
+                                                                            *ngIf="!emprunts || emprunts.length == 0">
+                                                                            <tr>
+                                                                                <td colspan="9">
+                                                                                    <div class="card text-center mt-3">
+                                                                                        <p
+                                                                                            class="mt-5 mb-2 text-danger">
+                                                                                            Aucun emprunt !</p><br>
+                                                                                        <p class="mb-5">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-outline-secondary btn-sm waves-effect f-w-600 d-inline-block">
+                                                                                                <i class="fa fa-refresh
+                                                                                    m-r-5"></i>rafraichir
+                                                                                            </button>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </ng-container>
+                                                                    </tbody>
+                                                                    <tfoot>
+                                                                        <tr>
+                                                                            <td colspan="9">
+                                                                                <mfBootstrapPaginator
+                                                                                    class="pagination-main f-right">
+                                                                                </mfBootstrapPaginator>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tfoot>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- contact data table card end -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+                </ngb-tabset>
+            </div>
+        </div>
+    </div>
+</div>

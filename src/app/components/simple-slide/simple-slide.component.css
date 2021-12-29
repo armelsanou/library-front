@@ -1,0 +1,12 @@
+/* Slider */
+.carousel-item {
+  height: 40vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.carousel{
+  position: relative;
+  top: -28px;
+}

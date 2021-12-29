@@ -1,0 +1,94 @@
+<section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+  <!-- starts -->
+  <div class="auth-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- Authentication card start -->
+        <div class="login-card card-body auth-body">
+          <form [formGroup]="registrationForm" class="md-float-material">
+            <div class="text-center">
+              <img src="assets/images/auth/logo-dark.png" alt="Guru Able">
+            </div>
+            <div class="auth-box">
+              <div class="row m-b-20">
+                <div class="col-md-12">
+                  <h3 class="text-center txt-primary">Sign up. It is fast and easy.</h3>
+                </div>
+              </div>
+              <hr/>
+              <div class="input-group">
+                <input type="text" class="form-control" formControlName="nom" placeholder="Choose Username" required>
+                <span class="md-line"></span>
+              </div>
+              <div class="mb-1 mt-0 text-danger" *ngIf="registrationForm.controls.nom.errors?.required && registrationForm.controls.nom.touched">ce champ ne peut être vide!</div>
+              <div class="input-group">
+                <input type="text" class="form-control" formControlName="prenom" placeholder="Your Surname">
+                <span class="md-line"></span>
+              </div>
+              <div class="input-group">
+                <input type="email" class="form-control" formControlName="email" placeholder="Your Email Address" required>
+                <span class="md-line"></span>
+              </div>
+              <div class="mb-1 mt-0 text-danger" *ngIf="registrationForm.controls.email.errors?.required && registrationForm.controls.email.touched">ce champ ne peut être vide!</div>
+              <div class="input-group">
+                <input type="text" class="form-control" formControlName="login" placeholder="Your login" required>
+                <span class="md-line"></span>
+              </div>
+              <div class="mb-1 mt-0 text-danger" *ngIf="registrationForm.controls.login.errors?.required && registrationForm.controls.login.touched">ce champ ne peut être vide!</div>
+              <div class="input-group">
+                <input type="text" class="form-control" formControlName="telephone" placeholder="Your Phone Number">
+                <span class="md-line"></span>
+              </div>
+              <div class="input-group">
+                <input type="password" class="form-control" formControlName="mdp" placeholder="Choose Password">
+                <span class="md-line"></span>
+              </div>
+              <div class="mb-1 mt-0 text-danger" *ngIf="registrationForm.controls.mdp.errors?.required && registrationForm.controls.mdp.touched">ce champ ne peut être vide!</div>
+              <div class="input-group">
+                <input type="password" class="form-control" formControlName="confirmmdp" placeholder="Confirm Password">
+                <span class="md-line"></span>
+              </div>
+              <div class="mb-1 mt-0 text-danger" *ngIf="registrationForm.controls.confirmmdp.errors?.required && registrationForm.controls.confirmmdp.touched">ce champ ne peut être vide!</div>
+              <div class="row m-t-25 text-left">
+                <div class="col-md-12">
+                  <div class="checkbox-fade fade-in-primary">
+                    <label>
+                      <input type="checkbox" value="">
+                      <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                      <span class="text-inverse">I read and accept <a href="javascript:;">Terms &amp; Conditions.</a></span>
+                      <p class="text-inverse m-t-5 text-center">Go Back to<a [routerLink]="['/auth/login/simple']"> Login </a></p>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row m-t-5">
+                <div class="col-md-12">
+                  <button type="button" (click)="register()" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-10" [disabled]="!registrationForm.valid">
+                    {{buttonAction}}
+                    <span *ngIf="loadInscription"
+                      class="spinner-border spinner-border-sm ml-2" role="status" aria-hidden="true">
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col-md-10">
+                  <p class="text-inverse text-left m-b-0">Thank you and enjoy our website.</p>
+                </div>
+                <div class="col-md-2">
+                  <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
+                </div>
+              </div>
+            </div>
+          </form>
+          <!-- end of form -->
+        </div>
+        <!-- Authentication card end -->
+      </div>
+      <!-- end of col-sm-12 -->
+    </div>
+    <!-- end of row -->
+  </div>
+  <!-- end of -->
+</section>

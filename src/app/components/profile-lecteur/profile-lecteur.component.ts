@@ -53,6 +53,7 @@ export class ProfileLecteurComponent implements OnInit {
   public sortOrder = 'desc';
   profitChartOption: any;
   user: any = null;
+  imgSrc = "";
 
   constructor(
     public httpClient: HttpClient,private router: Router, private userService: UserService,
@@ -67,64 +68,12 @@ export class ProfileLecteurComponent implements OnInit {
       login: this.login,
       telephone: this.telephone
     });
+    this.imgSrc = this.settingService.getApiDomainImageUploadedLocation();
   }
 
   ngOnInit() {
 
     this.getUser();
-
-    this.basicContent = '<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give\n                              you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder\n                              of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not\n                              know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves\n                              or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil\n                              and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise,\n                              except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no\n                              annoying consequences, or one who avoids a pain that produces no resultant pleasure?\' \'On the other hand, we denounce with righteous\n                              indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that\n                              they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through\n                              weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to\n                              distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able To Do what we like best,\n                              every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations\n                              of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds\n                              in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to\n                              avoid worse pain.</p>';
-
-    setTimeout(() => {
-      this.profitChartOption = {
-        tooltip: {
-          trigger: 'item',
-          formatter: function(params) {
-            const date = new Date(params.value[0]);
-            let data = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ';
-            data += date.getHours() + ':' + date.getMinutes();
-            return data + '<br/>' + params.value[1] + ', ' + params.value[2];
-          },
-          responsive: true
-        },
-        dataZoom: {
-          show: true,
-          start: 70
-        },
-        legend: {
-          data: ['Profit']
-        },
-        grid: {
-          y2: 80
-        },
-        xAxis: [{
-          type: 'time',
-          splitNumber: 10
-        }],
-        yAxis: [{
-          type: 'value'
-        }],
-        series: [{
-          name: 'Profit',
-          type: 'line',
-          showAllSymbol: true,
-          symbolSize: function(value) {
-            return Math.round(value[2] / 10) + 2;
-          },
-          data: (function() {
-            const d: any = [];
-            let len = 0;
-            const now = new Date();
-            while (len++ < 200) {
-              const random1: any = (Math.random() * 30).toFixed(2);
-              const random2: any = (Math.random() * 100).toFixed(2);
-              d.push([ new Date(2014, 9, 1, 0, len * 10000), random1 - 0, random2 - 0 ]);
-            }
-            return d;
-          })()
-        }]
-      };
-    }, 1);
 
   }
 
@@ -153,7 +102,6 @@ export class ProfileLecteurComponent implements OnInit {
         let res: any = result;
         this.abonnements = res.effectuerabonnementList;
         this.emprunts = res.empruntList;
-        console.log("abonnements", this.abonnements, "emprunts", this.emprunts);
       },
       (err) => {
         Swal.fire('Une erreur est survenue!','Veuillez réessayer plus tard.','error');
@@ -166,7 +114,7 @@ export class ProfileLecteurComponent implements OnInit {
 
   update(){
     const content = {
-      "idLecteur":	3,
+      "idLecteur":	this.user.idLecteur,
       "nom":	this.profileForm.get('nom').value,
       "prenom":	this.profileForm.get('prenom').value,
       "email":	this.profileForm.get('email').value,

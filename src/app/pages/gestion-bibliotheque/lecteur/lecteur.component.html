@@ -10,7 +10,7 @@
 <div class="row" *ngIf="loadLecteurs === false">
     <div class="col-sm-12">
         <!-- Tooltip Validation card start -->
-        <!--<app-card [title]="'Enregistrement des lecteurs Ue'" [headerContent]="'Formulaire d\'enregistrement des lecteurs Ue'">
+        <!--<app-card [title]="'Enregistrement des lecteurs'" [headerContent]="'Formulaire d\'enregistrement des lecteurs'">
             <form [formGroup]="lecteurForm" (ngSubmit)="submitAction()">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><strong>Code :</strong></label>
@@ -96,25 +96,25 @@
                                   <mfDefaultSorter  by="image">Profile</mfDefaultSorter>
                                 </th>
                                 <th>
-                                  <mfDefaultSorter  by="name">Role</mfDefaultSorter>
+                                  <mfDefaultSorter  by="role">Role</mfDefaultSorter>
                                 </th>
                                 <th>
-                                  <mfDefaultSorter  by="email">Nom</mfDefaultSorter>
+                                  <mfDefaultSorter  by="nom">Nom</mfDefaultSorter>
                                 </th>
                                 <th>
-                                  <mfDefaultSorter  by="position">Prénom</mfDefaultSorter>
+                                  <mfDefaultSorter  by="prenom">Prénom</mfDefaultSorter>
                                 </th>
                                 <th>
-                                  <mfDefaultSorter by="office">Email</mfDefaultSorter>
+                                  <mfDefaultSorter by="email">Email</mfDefaultSorter>
                                 </th>
                                 <th>
-                                  <mfDefaultSorter  by="age">Téléphone</mfDefaultSorter>
+                                  <mfDefaultSorter  by="telephone">Téléphone</mfDefaultSorter>
                                 </th>
                                 <th>
-                                  <mfDefaultSorter  by="age">Nombre d'emprunts</mfDefaultSorter>
+                                  <mfDefaultSorter  by="empruntList">Nombre d'emprunts</mfDefaultSorter>
                                 </th>
                                 <th>
-                                  <mfDefaultSorter by="phone_no">Nombre d'abonnements</mfDefaultSorter>
+                                  <mfDefaultSorter by="effectuerabonnementList">Nombre d'abonnements</mfDefaultSorter>
                                 </th>
                             </tr>
                         </thead>
@@ -127,7 +127,10 @@
                                         <a href="javascript:;" class="crm-action-delete text-muted text-danger" (click)="deletecategorie(item.idcategorie)"><i
                                             class="icofont icofont-delete-alt"></i></a>
                                     </td>
-                                    <td><img src="assets/images/avatar-2.jpg" class="d-inline-block img-circle " alt="tbl"></td>
+                                    <td>
+                                        <img *ngIf="item.image" src="{{imgSrc}}/{{item.image}}" style="width: 100px; height: 100px;" class="d-inline-block img-circle " alt="tbl">
+                                        <img *ngIf="!item.image" src="assets/images/none.png" style="width: 100px; height: 100px;" class="d-inline-block img-circle " alt="tbl">
+                                    </td>
                                     <td><label class="label label-inverse">{{item.role}}</label></td>
                                     <td>{{item.nom}}</td>
                                     <td>{{item?.prenom}}</td>

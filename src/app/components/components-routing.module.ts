@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LivreComponent } from './livre/livre.component';
+import { LivreDetailsComponent } from './livre-details/livre-details.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,9 @@ const routes: Routes = [
     },
     children: [
       {
-        path: 'components',
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
         loadChildren: () => import('./components.module').then(m => m.ComponentsModule)
       },
       {
@@ -50,7 +53,7 @@ const routes: Routes = [
         component: ProfileLecteurComponent
       },
       {
-        path: 'livres',
+        path: 'livres/categorie/:id',
         data: {
           breadcrumb: 'Livres disponibles',
           icon: 'icofont-maximize bg-c-yellow',
@@ -58,6 +61,16 @@ const routes: Routes = [
           status: true
         },
         component: LivreComponent
+      },
+      {
+        path: 'livre/:id',
+        data: {
+          breadcrumb: 'Détails du livre',
+          icon: 'icofont-maximize bg-c-yellow',
+          breadcrumb_caption: 'Informations sur le livre',
+          status: true
+        },
+        component: LivreDetailsComponent
       }
     ]
   }

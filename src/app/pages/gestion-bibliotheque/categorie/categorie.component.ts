@@ -1,6 +1,7 @@
+import { FileUploadService } from './../../../services/servicesBibliotheque/file-upload/file-upload.service';
 import { CategorieService } from './../../../services/servicesBibliotheque/categorie/categorie.service';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as $ from 'jquery';
 import swal from 'sweetalert2';
@@ -15,6 +16,7 @@ import { SendNotificationService } from '../../../services/send-notication/send-
 })
 export class CategorieComponent implements OnInit {
 
+  @ViewChild("image", {static: false}) image: ElementRef;
   public categories: any[] = [];
   public rowsOnPage = 10;
   public filterQuery = '';
@@ -32,21 +34,26 @@ export class CategorieComponent implements OnInit {
   buttonAction = "Enregistrer";
   currentCategorieId: number;
   deleted = false;
-  categorie: any = {"libelle": ""};
+  categorie: any = {"idCategorie":"", "libelle": "", "image": ""};
+  imgSrc = "";
 
   categorieForm: FormGroup;
   libelle = new FormControl('', [Validators.required]);
+  img = new FormControl('');
 
   constructor(
     public httpClient: HttpClient,
     public categorieService: CategorieService,
     private settingService : SettingService,
-    private sendNotificationService: SendNotificationService,
+    private fileUploadService: FileUploadService,
+    private sendNotificationService: SendNotificationService
   )
   {
     this.categorieForm = new FormGroup({
-      libelle: this.libelle
+      libelle: this.libelle,
+      img: this.img
     });
+    this.imgSrc = this.settingService.getApiDomainImageUploadedLocation();
   }
 
   ngOnInit() {
@@ -74,11 +81,53 @@ export class CategorieComponent implements OnInit {
     );
   }
 
+  upload(file=null,create=null,update=null) {
+    var formData: any = new FormData();
+    formData.append("file", this.categorieForm.get('img').value);
+    if (file) {
+      if (create) {
+        this.fileUploadService.upload(formData).subscribe(
+          (response) => this.createCategorie(),
+          (error) => (err) => {
+            this.error = 'Une erreur est survenue l image n a pas été correctement chargée.';
+            this.settingService.option.title = "error";
+            this.settingService.option.msg = this.error;
+            this.sendNotificationService.addToast(this.settingService.option, "warning");
+          }
+        )
+      }
+      if (update) {
+        this.fileUploadService.upload(formData).subscribe(
+          (response) => this.updateCategorie(),
+          (error) => (err) => {
+            this.error = 'Une erreur est survenue l image n a pas été correctement chargée.';
+            this.settingService.option.title = "error";
+            this.settingService.option.msg = this.error;
+            this.sendNotificationService.addToast(this.settingService.option, "warning");
+          }
+        )
+      }
+    } else {
+      if (create) {
+        this.createCategorie();
+      }
+      if (update) {
+        this.updateCategorie();
+      }
+    }
+  }
+
+  uploadFile(event) {
+    const file = event.target.files[0];
+    this.categorie.image = file.name;
+    this.categorieForm.get('img').setValue(file); //this line is mandatory
+  }
+
   createCategorie(){
     this.buttonAction = "Enregistrement...";
     this.createLoad = true;
     this.initializeCategorieObject();
-    this.categorieService.createCategorie(this.categorie.libelle).then(
+    this.categorieService.createCategorie(this.categorie).then(
       (result) => {
         if (result) {
           this.createLoad = false;
@@ -110,12 +159,7 @@ export class CategorieComponent implements OnInit {
     this.buttonAction = "Modification...";
     this.updateLoad = true;
     this.initializeCategorieObject();
-    const content = 
-    {
-      "idCategorie": this.currentCategorieId,
-      "libelle": this.categorie.libelle
-    }
-    this.categorieService.updateCategorie(content).then(
+    this.categorieService.updateCategorie(this.categorie).then(
       (result) => {
         if (result) {
           this.updateLoad = false;
@@ -179,6 +223,7 @@ export class CategorieComponent implements OnInit {
 
   initializeCategorieObject(){
     this.categorie.libelle = this.categorieForm.get('libelle').value;
+    this.categorie.idCategorie = this.currentCategorieId;
   }
 
   fillFormBeforUpdating(categorie){
@@ -199,11 +244,18 @@ export class CategorieComponent implements OnInit {
   }
 
   submitAction(){
+    var file = null;
+    if (this.categorieForm.get('img').value) {
+      file = this.categorieForm.get('img').value;
+    }
+    console.log("submitted", this.buttonAction,file);
     if (this.buttonAction === 'Modifier') {
-      this.updateCategorie();
+      this.upload(file,null,"yes");
+      //this.updateLivre();
     }
     if (this.buttonAction === 'Enregistrer') {
-      this.createCategorie();
+      //this.createLivre();
+      this.upload(file,"yes",null);
     }
   }
 

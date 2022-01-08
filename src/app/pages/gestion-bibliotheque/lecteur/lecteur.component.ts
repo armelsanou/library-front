@@ -42,6 +42,7 @@ export class LecteurComponent implements OnInit {
   periode = new FormControl('', [Validators.required]);
   prix = new FormControl('', [Validators.required]);
   description = new FormControl('', [Validators.required]);
+  imgSrc = "";
 
   constructor(
     public httpClient: HttpClient,
@@ -56,6 +57,7 @@ export class LecteurComponent implements OnInit {
       prix: this.prix,
       description: this.description
     });
+    this.imgSrc = this.settingService.getApiDomainImageUploadedLocation();
   }
 
   ngOnInit() {

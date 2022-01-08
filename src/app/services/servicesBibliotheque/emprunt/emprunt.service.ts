@@ -45,7 +45,7 @@ export class EmpruntService {
         reject(err);
       });
     });
-  }  
+  }
   
   avertirLecteur(isbn, idLecteur, dateEmprunt) {
     return new Promise((resolve, reject) => {
@@ -61,6 +61,29 @@ export class EmpruntService {
         "dateEmprunt": dateEmprunt
       }
       this.httpclient.patch(this.getApiEmpruntUrl()+"/avertir", body, httpOptions).pipe(
+        catchError(this.handleError)
+      ).subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+  
+  remettreLivre(isbn, idLecteur, dateEmprunt) {
+    return new Promise((resolve, reject) => {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        })
+      };
+      const body = {
+        "isbn": isbn,
+        "idLecteur": idLecteur,
+        "dateEmprunt": dateEmprunt
+      }
+      this.httpclient.patch(this.getApiEmpruntUrl()+"/remettre", body, httpOptions).pipe(
         catchError(this.handleError)
       ).subscribe(res => {
         resolve(res);

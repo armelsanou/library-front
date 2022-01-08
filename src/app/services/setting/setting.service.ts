@@ -32,4 +32,12 @@ export class SettingService {
     return this.domain + '/api'
   }
 
+  getApiDomainImageLocation(){
+    return this.getApiDomain()+'/uploadFile'
+  }
+
+  getApiDomainImageUploadedLocation(){
+    return this.getApiDomain()+'/downloadFile'
+  }
+
 }

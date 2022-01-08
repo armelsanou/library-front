@@ -12,12 +12,14 @@ import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BreadcrumbsComponent } from '../layout/bibliotheque/breadcrumbs/breadcrumbs.component';
-import { CategorieComponent } from './categorie/categorie.component';
 import { ProfileLecteurComponent } from './profile-lecteur/profile-lecteur.component';
 import { TinymceModule } from 'angular2-tinymce';
 import { DataTableModule } from 'angular2-datatable';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { LivreComponent } from './livre/livre.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { LivreDetailsComponent } from './livre-details/livre-details.component';
 
 @NgModule({
   imports: [
@@ -31,7 +33,10 @@ import { LivreComponent } from './livre/livre.component';
     TinymceModule,
     HttpClientModule,
     DataTableModule,
-    NgxEchartsModule
+    NgxDatatableModule,
+    TinymceModule,
+    NgxEchartsModule,
+    Ng2SearchPipeModule
   ],
   declarations: [
     ComponentsComponent,
@@ -41,9 +46,9 @@ import { LivreComponent } from './livre/livre.component';
     TitleComponent,
     BreadcrumbsComponent,
     AbonnementComponent,
-    CategorieComponent,
     ProfileLecteurComponent,
-    LivreComponent
+    LivreComponent,
+    LivreDetailsComponent
   ]
 })
 export class ComponentsModule { }

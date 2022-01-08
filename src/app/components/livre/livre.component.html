@@ -18,117 +18,130 @@
         <div class="row">
             <div class="col-lg-3">
                 <!-- user contact card left side start -->
-                <div class="card">
+                <div class="card"  style="top: 0px; position: sticky;">
                     <div class="card-header contact-user">
                         <h4 style="color: white;">Par catégorie</h4>
                     </div>
-                    <div class="card-body groups-contact" *ngIf="!isEmpty && totalRecords > 0">
-                        <ul class="list-group">
-                            <li class="list-group-item justify-content-between" *ngFor="let categorie of categories">
-                                {{categorie.libelle}}
-                                <span class="badge badge-default badge-pill">{{categorie.livreList.length}}</span>
-                            </li>
-                        </ul>
+                    <div class="card-body groups-contact">
+                      <ul class="list-group" *ngIf="!isEmptyCategorie">
+                        <li class="list-group-item justify-content-between active" (click) = "getLivresForCategorie('all')" style="cursor: pointer;" id="cat-all">
+                          Toutes catégories
+                        </li>
+                        <li class="list-group-item justify-content-between" *ngFor="let categorie of categories" (click) = "getLivresForCategorie(categorie.idCategorie)" style="cursor: pointer;" id="cat-{{categorie.idCategorie}}">
+                          {{categorie.libelle}}
+                          <span class="badge badge-danger badge-pill">{{categorie.livreList.length}}</span>
+                        </li>
+                      </ul>
+                      <ul class="list-group" *ngIf="isEmptyCategorie">
+                        <li class="list-group-item justify-content-between">
+                          Aucune catégorie
+                          <span class="badge badge-default badge-pill">0</span>
+                        </li>
+                      </ul>
                     </div>
                 </div>
                 <!-- user contact card left side end -->
             </div>
             <div class="col-lg-9">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <!-- contact data table card start -->
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-header-text">Livres</h5>
+              <div class="row">
+                <div class="col-sm-12">
+                  <!-- contact data table card start -->
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="card-header-text">Livres</h5>
+                    </div>
+                    <div class="card-body contact-details">
+                      <div class="dt-responsive">
+                        <div class="row mb-3">
+                            <div class="col-xs-12 col-sm-12 col-sm-12 col-md-6">
+                              <div>
+                                <label class="label-control">Show
+                                  <select class="form-control input-sm full-data-show-entry" [(ngModel)]="rowsOnPage">
+                                    <option [ngValue]="12">12</option>
+                                    <option [ngValue]="24">24</option>
+                                    <option [ngValue]="48">48</option>
+                                    <option [ngValue]="96">96</option>
+                                  </select>
+                                  entries
+                                </label>
+                              </div>
                             </div>
-                            <div class="card-body contact-details">
-                                <div class="dt-responsive">
-                                    <div class="row mb-3">
-                                        <div class="col-xs-12 col-sm-12 col-sm-12 col-md-6">
-                                          <div>
-                                            <label class="label-control">Show
-                                              <select class="form-control input-sm full-data-show-entry" [(ngModel)]="rowsOnPage">
-                                                <option [ngValue]="10">10</option>
-                                                <option [ngValue]="25">25</option>
-                                                <option [ngValue]="50">50</option>
-                                                <option [ngValue]="100">100</option>
-                                              </select>
-                                              entries
-                                            </label>
-                                          </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                          <div style="text-align: right;">
-                                            <label>Search:
-                                              <input type="search" [(ngModel)]="filterQuery"
-                                                class="form-control input-sm full-data-search" placeholder="Search name">
-                                            </label>
-                                          </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xl-3 col-md-6 col-sm-6">
-                                            <div class="card rounded-card user-card">
-                                              <div class="card-block">
-                                                <div class="img-hover">
-                                                  <img class="img-fluid img-radius" src="assets/images/user-card/img-round1.jpg" alt="round-img">
-                                                  <div class="img-overlay img-radius">
-                                                    <span>
-                                                      <a href="#" class="btn btn-sm btn-primary" data-popup="lightbox"><i
-                                                          class="icofont icofont-plus"></i></a>
-                                                      <a href="" class="btn btn-sm btn-primary"><i class="icofont icofont-link-alt"></i></a>
-                                                    </span>
-                                                  </div>
-                                                </div>
-                                                <div class="user-content">
-                                                  <h4 class="">livre 1</h4>
-                                                  <p class="m-b-0 text-muted">Livres: <label class="label label-danger">dfljdsfl lje</label>
-                                                  </p>
-                                                </div>
-                                                <ul class="icons-list mt-15">
-                                                  <li><a href="#" data-popup="tooltip" data-original-title="Google Drive"><i
-                                                        class="icon-google-drive"></i></a></li>
-                                                  <li><a href="#" data-popup="tooltip" data-original-title="Twitter"><i class="icon-twitter"></i></a></li>
-                                                  <li><a href="#" data-popup="tooltip" data-original-title="Github"><i class="icon-github"></i></a></li>
-                                                </ul>
-                                              </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-xl-3 col-md-6 col-sm-6">
-                                            <div class="card rounded-card user-card">
-                                              <div class="card-block">
-                                                <div class="img-hover">
-                                                  <img class="img-fluid img-radius" src="assets/images/user-card/img-round1.jpg" alt="round-img">
-                                                  <div class="img-overlay img-radius">
-                                                    <span>
-                                                      <a href="#" class="btn btn-sm btn-primary" data-popup="lightbox"><i
-                                                          class="icofont icofont-plus"></i></a>
-                                                      <a href="" class="btn btn-sm btn-primary"><i class="icofont icofont-link-alt"></i></a>
-                                                    </span>
-                                                  </div>
-                                                </div>
-                                                <div class="user-content">
-                                                  <h4 class="">livre 2</h4>
-                                                  <p class="m-b-0 text-muted">Livres: <label class="label label-danger">je lsouesrklj</label>
-                                                  </p>
-                                                </div>
-                                                <ul class="icons-list mt-15">
-                                                  <li><a href="#" data-popup="tooltip" data-original-title="Google Drive"><i
-                                                        class="icon-google-drive"></i></a></li>
-                                                  <li><a href="#" data-popup="tooltip" data-original-title="Twitter"><i class="icon-twitter"></i></a></li>
-                                                  <li><a href="#" data-popup="tooltip" data-original-title="Github"><i class="icon-github"></i></a></li>
-                                                </ul>
-                                              </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                              <div style="text-align: right;">
+                                <label>Search:
+                                  <input type="search" [(ngModel)]="searchText"
+                                    class="form-control input-sm full-data-search" placeholder="Search name">
+                                </label>
+                              </div>
                             </div>
                         </div>
-                        <!-- contact data table card end -->
+                        <hr>
+                        <div class="col-md-12 text-center mb-5" *ngIf="loadLivres">
+                          <!--Loading-->
+                          <div class="col md-5">
+                          </div>
+                          <div class="col md-7">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                          </div>
+                          <!--Loading-->
+                        </div>
+                        <table class="table table-striped table-bordered full-data-table" [mfData]="livres | filter:searchText" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                          <tbody>
+                            <div class="row"  *ngIf="!isEmptyLivre">
+                              <div class="col-lg-6 col-xl-3 col-md-6 col-sm-6 mt-3" *ngFor="let livre of mf.data | filter:searchText" style="cursor: pointer;">
+                                  <div class="card rounded-card user-card">
+                                    <div class="card-block">
+                                      <div class="img-hover">
+                                        <img *ngIf="livre.image" src="{{imgSrc}}/{{livre.image}}" class="img-fluid img-radius" alt="round-img" title="Cliquez pour voir les détails">
+                                        <img *ngIf="!livre.image" class="img-fluid img-radius" src="assets/images/none.png" alt="round-img">
+                                        <div class="img-overlay img-radius">
+                                          <span>
+                                            <a (click) = "seeDetails(livre.isbn)" class="btn btn-sm btn-primary" data-popup="lightbox"><i
+                                                class="icofont icofont-eye"></i></a>
+                                            <a class="btn btn-sm btn-primary"><i class="icofont icofont-link-alt"></i></a>
+                                          </span>
+                                        </div>
+                                      </div>
+                                      <div class="user-content">
+                                        <h4 class="">{{livre.titre}}</h4>
+                                        <p class="m-b-0 text-muted">Auteur: {{livre.auteur}}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="row"  *ngIf="isEmptyLivre">
+                              <div class="col-md-12 text-danger">
+                                <div class="card text-center mt-3">
+                                    <p
+                                        class="mt-5 mb-2 text-danger">
+                                        Aucun Livre !</p><br>
+                                    <p class="mb-5">
+                                        <button type="button"
+                                            class="btn btn-outline-secondary btn-sm waves-effect f-w-600 d-inline-block" (click) = "getLivresForCategorie('all')">
+                                            <i class="fa fa-refresh
+                                m-r-5"></i>Afficher tout
+                                        </button>
+                                    </p>
+                                </div>
+                              </div>
+                            </div>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="5">
+                                <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                      </table>
+                      </div>
                     </div>
+                  </div>
+                  <!-- contact data table card end -->
                 </div>
+              </div>
             </div>
         </div>
     </div>

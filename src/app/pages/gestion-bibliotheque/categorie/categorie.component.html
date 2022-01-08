@@ -13,6 +13,13 @@
         <app-card [title]="'Enregistrement des categories'" [headerContent]="'Formulaire d\'enregistrement des categories'">
             <form [formGroup]="categorieForm" (ngSubmit)="submitAction()">
                 <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"><strong>Image :</strong></label>
+                    <div class="col-sm-10">
+                        <input type="file" #image (change)="uploadFile($event)" accept="image/*"  class="form-control tooltip-form" id="img" formControlName="img" name="img" placeholder="Télécharger une image pour la catégorie  ">
+                        <div class="messages text-danger tooltip-error" placement="top" ngbTooltip="L'image ne peut être nulle." *ngIf="categorieForm.controls.img.errors?.required"><i class="text-danger icofont icofont-close-circled"></i></div>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><strong>Nom :</strong></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control tooltip-form" id="libelle" formControlName="libelle" name="libelle" placeholder="Entrez le nom de la catégorie  ">
@@ -72,6 +79,9 @@
                                     <mfDefaultSorter>Action</mfDefaultSorter>
                                 </th>
                                 <th>
+                                    <mfDefaultSorter>Image</mfDefaultSorter>
+                                </th>
+                                <th>
                                     <mfDefaultSorter >Nom de la catégorie</mfDefaultSorter>
                                 </th>
                                 <th>
@@ -88,13 +98,21 @@
                                         <a href="javascript:;" class="crm-action-delete text-muted text-danger" (click)="deleteCategorie(item.idCategorie)"><i
                                             class="icofont icofont-delete-alt"></i></a>
                                     </td>
+                                    <td>
+                                        <a class="media-left" href="javascript:;">
+                                          <img *ngIf="item.image" class="media-object img-radius comment-img" src="{{imgSrc}}/{{item.image}}" style="width: 100px; height: 100px;"
+                                            alt="image {{item.libelle}}">
+                                            <img *ngIf="!item.image" class="media-object img-radius comment-img" src="assets/images/none.png" style="width: 100px; height: 100px;"
+                                              alt="image {{item.libelle}}">
+                                        </a>
+                                    </td>
                                     <td>{{item.libelle}}</td>
                                     <td><label class="label label-danger">{{item.livreList.length}}</label></td>
                                 </tr>
                             </ng-container>
                             <ng-container *ngIf="isEmpty">
                                 <tr>
-                                    <td colspan="3">
+                                    <td colspan="4">
                                         <div class="card text-center mt-3">
                                             <p class="mt-5 mb-2 text-danger">Aucun enregistrement !</p><br>
                                             <p class="mb-5">
@@ -109,7 +127,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
                                 </td>
                             </tr>

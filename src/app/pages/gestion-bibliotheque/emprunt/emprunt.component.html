@@ -111,7 +111,7 @@
                                     <mfDefaultSorter >Nombre Avertissements</mfDefaultSorter>
                                 </th>
                                 <th>
-                                    <mfDefaultSorter >Avertir</mfDefaultSorter>
+                                    <mfDefaultSorter >Action</mfDefaultSorter>
                                 </th>
                             </tr>
                         </thead>
@@ -131,9 +131,10 @@
                                     <td>{{item?.dateRetourEff || 'Pas encore rendu'}}</td>
                                     <td><label class="label label-inverse">{{item?.nbrAvertissement}}</label></td>
                                     <td>
-                                        <button class="btn-danger btn-sm" *ngIf="!item.dateRetourEff; else renduBlock" (click)="avertirLecteur(item.livre.isbn,item.lecteur.idLecteur,item.empruntPK.dateEmprunt)">{{buttonAction}}</button>
+                                        <button class="btn-danger btn-sm mr-2" *ngIf="!item.dateRetourEff; else renduBlock" (click)="avertirLecteur(item.livre.isbn,item.lecteur.idLecteur,item.empruntPK.dateEmprunt,item.lecteur.nom)">{{buttonAction}}</button>
+                                        <button class="btn-warning btn-sm" *ngIf="!item.dateRetourEff" (click)="remettreLivre(item.livre.isbn,item.lecteur.idLecteur,item.empruntPK.dateEmprunt, item.lecteur.nom)">{{buttonAction1}}</button>
                                         <ng-template #renduBlock>
-                                            <button class="btn-success btn-sm">Rendu</button>
+                                            <button class="btn-success btn-sm">Déjà rendu</button>
                                         </ng-template>
                                     </td>
                                 </tr>
@@ -142,7 +143,7 @@
                                 <tr>
                                     <td colspan="7">
                                         <div class="card text-center mt-3">
-                                            <p class="mt-5 mb-2 text-danger">Aucun enregistrement !</p><br>
+                                            <p class="mt-5 mb-2 text-danger">Aucun emprunt !</p><br>
                                             <p class="mb-5">
                                                 <button type="button" class="btn btn-outline-secondary btn-sm waves-effect f-w-600 d-inline-block">
                                                     <i class="fa fa-refresh m-r-5"></i>rafraichir

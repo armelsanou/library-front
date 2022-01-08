@@ -9,7 +9,7 @@
                         <i class="ti-menu"></i>
                     </a>
                     <a [routerLink]="['/components/home']">
-                        <img class="img-fluid logo-img" src="assets/images/logo_upac.jpg" alt="Theme-Logo"
+                        <img class="img-fluid logo-img" src="assets/images/logo_up.jpg" alt="Theme-Logo"
                             title="retour à l'accueil" />
                     </a>
                     <a (click)="onMobileMenu()" class="mobile-options">
@@ -263,8 +263,8 @@
                             <div class="main-menu-header">
                                 <img class="img-40 img-radius" src="assets/images/avatar-4.jpg" alt="User-Profile-Image">
                                 <div class="user-details">
-                                    <span>{{user.email}}</span>
-                                    <span id="more-details" (click)="toggleOpenedSidebar()">{{user.role}}<i class="ti-angle-down"></i></span>
+                                    <span>{{user?.email}}</span>
+                                    <span id="more-details" (click)="toggleOpenedSidebar()">{{user?.role}}<i class="ti-angle-down"></i></span>
                                 </div>
                             </div>
                             <div class="main-menu-content">

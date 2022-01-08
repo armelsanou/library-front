@@ -17,6 +17,7 @@ import { ToastyModule } from 'ng2-toasty';
 import { GestionBibliothequeModule } from './pages/gestion-bibliotheque/gestion-bibliotheque.module';
 import { BibliothequeComponent } from './layout/bibliotheque/bibliotheque.component';
 import { Interceptor } from './services/interceptor/interceptor';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { Interceptor } from './services/interceptor/interceptor';
     BibliothequeComponent,
     BreadcrumbsComponent,
     TitleComponent,
-    AuthComponent
+    AuthComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

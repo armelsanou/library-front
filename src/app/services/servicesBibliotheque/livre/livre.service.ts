@@ -7,7 +7,7 @@ import { SettingService } from '../../setting/setting.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CategorieService {
+export class LivreService {
 
   error: {};
   reponse: any;
@@ -18,11 +18,11 @@ export class CategorieService {
     private httpclient : HttpClient
   ) { }
 
-  getApiCategorieUrl(){
-    return this.settingService.getApiDomain()+"/categorie";
+  getApiLivreUrl(){
+    return this.settingService.getApiDomain()+"/livre";
   }
 
-  createCategorie(categorie) {
+  createLivre(livre) {
     return new Promise((resolve, reject) => {
       const httpOptions = {
         headers: new HttpHeaders({
@@ -31,10 +31,16 @@ export class CategorieService {
         })
       };
       const body = {
-        'libelle': categorie.libelle,
-        'image': categorie.image
+        'isbn': livre.isbn,
+        'titre': livre.titre,
+        'dateEdition': livre.dateEdition,
+        'auteur': livre.auteur,
+        'image': livre.image,
+        'description': livre.description,
+        'idEtatLivre': livre.idEtatLivre,
+        'idCategorie': livre.idCategorie
       }
-      this.httpclient.post(this.getApiCategorieUrl(), body, httpOptions).pipe(
+      this.httpclient.post(this.getApiLivreUrl(), body, httpOptions).pipe(
         catchError(this.handleError)
       ).subscribe(res => {
         resolve(res);
@@ -44,7 +50,7 @@ export class CategorieService {
     });
   }
 
-  updateCategorie(content) {
+  updateLivre(content) {
     return new Promise((resolve, reject) => {
       const httpOptions = {
         headers: new HttpHeaders({
@@ -52,7 +58,7 @@ export class CategorieService {
           'Accept': 'application/json'
         })
       };
-      this.httpclient.put(this.getApiCategorieUrl(), content, httpOptions).pipe(
+      this.httpclient.put(this.getApiLivreUrl(), content, httpOptions).pipe(
         catchError(this.handleError)
       ).subscribe(res => {
         resolve(res);
@@ -62,7 +68,7 @@ export class CategorieService {
     });
   }
 
-  deleteCategorie(idCategorie) {
+  deleteLivre(isbn) {
     return new Promise((resolve, reject) => {
       const httpOptions = {
         headers: new HttpHeaders({
@@ -70,7 +76,7 @@ export class CategorieService {
           'Accept': 'application/json'
         })
       };
-      this.httpclient.delete(this.getApiCategorieUrl()+"/"+idCategorie, httpOptions).pipe(
+      this.httpclient.delete(this.getApiLivreUrl()+"/"+isbn, httpOptions).pipe(
         catchError(this.handleError)
       ).subscribe(res => {
         resolve(res);
@@ -80,8 +86,48 @@ export class CategorieService {
     });
   }
 
-  getListCategories(){
-    return this.httpclient.get<any[]>(this.getApiCategorieUrl()+"s");
+  getLivresForCategorie(idCategorie) {
+    return new Promise((resolve, reject) => {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        })
+      };
+      this.httpclient.get(this.getApiLivreUrl()+"s/categorie/"+idCategorie, httpOptions).pipe(
+        catchError(this.handleError)
+      ).subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+
+  getLivre(isbn) {
+    return new Promise((resolve, reject) => {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        })
+      };
+      this.httpclient.get(this.getApiLivreUrl()+"/"+isbn, httpOptions).pipe(
+        catchError(this.handleError)
+      ).subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+
+  getListLivres(){
+    return this.httpclient.get<any[]>(this.getApiLivreUrl()+"s");
+  }
+
+  getListLivresDisponibles(){
+    return this.httpclient.get<any[]>(this.getApiLivreUrl()+"s-disponibles");
   }
 
   private handleError(error: HttpErrorResponse) {

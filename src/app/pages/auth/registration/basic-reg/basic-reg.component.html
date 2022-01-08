@@ -7,12 +7,16 @@
         <div class="login-card card-body auth-body">
           <form [formGroup]="registrationForm" class="md-float-material">
             <div class="text-center">
-              <img src="assets/images/auth/logo-dark.png" alt="Guru Able">
+              <img src="assets/images/logo_up.jpg" alt="Guru Able" style="height: 102px;">
             </div>
             <div class="auth-box">
-              <div class="row m-b-20">
-                <div class="col-md-12">
-                  <h3 class="text-center txt-primary">Sign up. It is fast and easy.</h3>
+              <div class="row" style="position: relative; top: -178px;">
+                <div class="circle">
+                  <img class="profile-pic" src="assets/images/armel.jpg">
+                </div>
+                <div class="p-image">
+                  <i class="fa fa-camera upload-button"></i>
+                  <input class="file-upload" #image (change)="uploadFile($event)" id="img" formControlName="img" name="img" type="file" accept="image/*"/>
                 </div>
               </div>
               <hr/>
@@ -63,7 +67,7 @@
               </div>
               <div class="row m-t-5">
                 <div class="col-md-12">
-                  <button type="button" (click)="register()" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-10" [disabled]="!registrationForm.valid">
+                  <button type="button" (click)="upload()" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-10" [disabled]="!registrationForm.valid">
                     {{buttonAction}}
                     <span *ngIf="loadInscription"
                       class="spinner-border spinner-border-sm ml-2" role="status" aria-hidden="true">

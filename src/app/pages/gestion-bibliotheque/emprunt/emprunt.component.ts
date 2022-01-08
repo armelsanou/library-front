@@ -29,6 +29,7 @@ export class EmpruntComponent implements OnInit {
   deleteMessage = "Supprimer";
   isEmpty = false;
   buttonAction = "Avertir";
+  buttonAction1 = "Rendu ?";
   currentAbonnementId: number;
   deleted = false;
   abonnement: any = {
@@ -82,109 +83,106 @@ export class EmpruntComponent implements OnInit {
     );
   }
 
-  avertirLecteur(isbn, idLecteur, dateEmprunt){
-    this.buttonAction = "En cours...";
-    this.createLoad = true;
-    this.empruntService.avertirLecteur(isbn, idLecteur, dateEmprunt).then(
-      (result) => {
-        if (result) {
-          this.createLoad = false;
-          this.settingService.option.title = "success";
-          this.settingService.option.msg = "Avertissement envoyé.";
-          this.sendNotificationService.addToast(this.settingService.option, "success");
-          this.getAllEmprunts();
-        } else {
-          this.createLoad = false;
-          this.settingService.option.title = "error";
-          this.settingService.option.msg = "Avertissement non envoyé.";
-          this.sendNotificationService.addToast(this.settingService.option, "error");
-          this.buttonAction = "Avertir";
-        }
+  avertirLecteur(isbn, idLecteur, dateEmprunt, nomLecteur){
+    Swal.fire({
+      title: 'Envoyer un arvertissement à '+nomLecteur +"?",
+      text: "Cette action est irréversible!",
+      type: 'question',
+      showCancelButton: true,
+      showLoaderOnConfirm: true,
+      confirmButtonColor: '#93BE52',
+      cancelButtonColor: '#d33',
+      confirmButtonClass: 'btn btn-success btn-sm',
+      cancelButtonClass: 'btn btn-danger btn-sm',
+      confirmButtonText: 'Oui, envoyer!',
+      preConfirm: () => {
+          return new Promise((resolve) => {
+          this.buttonAction = "En cours...";
+          this.createLoad = true;
+          this.empruntService.avertirLecteur(isbn, idLecteur, dateEmprunt).then(
+            (result) => {
+              if (result) {
+                this.createLoad = false;
+                this.settingService.option.title = "success";
+                this.settingService.option.msg = "Avertissement envoyé.";
+                this.sendNotificationService.addToast(this.settingService.option, "success");
+                this.buttonAction = "Avertir";
+                this.getAllEmprunts();
+                Swal.close();
+              } else {
+                this.createLoad = false;
+                this.settingService.option.title = "error";
+                this.settingService.option.msg = "Avertissement non envoyé.";
+                this.sendNotificationService.addToast(this.settingService.option, "error");
+                this.buttonAction = "Avertir";
+                Swal.close();
+              }
+            },
+            (err) => {
+              this.error = 'Une erreur est survenue. Veuillez réessayer plus tard.';
+              this.settingService.option.title = "error";
+              this.settingService.option.msg = this.error;
+              this.sendNotificationService.addToast(this.settingService.option, "error");
+              this.createLoad = false;
+              this.buttonAction = "Avertir";
+              Swal.close();
+            }
+          );
+        });
       },
-      (err) => {
-        this.error = 'Une erreur est survenue. Veuillez réessayer plus tard.';
-        this.settingService.option.title = "error";
-        this.settingService.option.msg = this.error;
-        this.sendNotificationService.addToast(this.settingService.option, "error");
-        this.createLoad = false;
-        this.buttonAction = "Avertir";
-      }
-    );
+      allowOutsideClick: () => !swal.isLoading(),
+    });
   }
 
-  /*createAbonnement(){
-    this.buttonAction = "Enregistrement...";
-    this.createLoad = true;
-    this.initializeAbonnementObject();
-    const content = 
-    {
-      "libelle": this.abonnement.libelle,
-      "periode": this.abonnement.periode,
-      "prix": this.abonnement.prix,
-      "description": this.abonnement.description
-    }
-    this.empruntService.emprunterLivre(content).then(
-      (result) => {
-        if (result) {
-          this.createLoad = false;
-          this.settingService.option.title = "success";
-          this.settingService.option.msg = "Abonnement crée avec succès.";
-          this.sendNotificationService.addToast(this.settingService.option, "success");
-          this.getAllEmprunts();
-          this.reset();
-        } else {
-          this.createLoad = false;
-          this.settingService.option.title = "error";
-          this.settingService.option.msg = "Abonnement non enregistré.";
-          this.sendNotificationService.addToast(this.settingService.option, "error");
-          this.buttonAction = "Enregistrer";
-        }
+  remettreLivre(isbn, idLecteur, dateEmprunt, nomLecteur){
+    Swal.fire({
+      title: "Vous confirmez que "+nomLecteur+" a rendu le livre?",
+      text: "Cette action est irréversible!",
+      type: 'question',
+      showCancelButton: true,
+      showLoaderOnConfirm: true,
+      confirmButtonColor: '#93BE52',
+      cancelButtonColor: '#d33',
+      confirmButtonClass: 'btn btn-success btn-sm',
+      cancelButtonClass: 'btn btn-danger btn-sm',
+      confirmButtonText: 'Oui, remis!',
+      preConfirm: () => {
+          return new Promise((resolve) => {
+          this.buttonAction1 = "En cours...";
+          this.createLoad = true;
+          this.empruntService.remettreLivre(isbn, idLecteur, dateEmprunt).then(
+            (result) => {
+              if (result) {
+                this.createLoad = false;
+                this.settingService.option.title = "success";
+                this.settingService.option.msg = "Livre marqué comme remis.";
+                this.sendNotificationService.addToast(this.settingService.option, "success");
+                this.buttonAction1 = "Rendu ?";
+                this.getAllEmprunts();
+                Swal.close();
+              } else {
+                this.createLoad = false;
+                this.settingService.option.title = "error";
+                this.settingService.option.msg = "Opération non reussie.";
+                this.sendNotificationService.addToast(this.settingService.option, "error");
+                this.buttonAction1 = "Rendu ?";
+                Swal.close();
+              }
+            },
+            (err) => {
+              this.error = 'Une erreur est survenue. Veuillez réessayer plus tard.';
+              this.settingService.option.title = "error";
+              this.settingService.option.msg = this.error;
+              this.sendNotificationService.addToast(this.settingService.option, "error");
+              this.createLoad = false;
+              this.buttonAction1 = "Rendu ?";
+              Swal.close();
+            }
+          );
+        });
       },
-      (err) => {
-        this.error = 'Une erreur est survenue. Veuillez réessayer plus tard.';
-        this.settingService.option.title = "error";
-        this.settingService.option.msg = this.error;
-        this.sendNotificationService.addToast(this.settingService.option, "error");
-        this.createLoad = false;
-        this.buttonAction = "Enregistrer";
-      }
-    );
+      allowOutsideClick: () => !swal.isLoading(),
+    });
   }
   
-  initializeAbonnementObject(){
-    this.abonnement.libelle = this.abonnementForm.get('libelle').value;
-    this.abonnement.periode = this.abonnementForm.get('periode').value;
-    this.abonnement.prix = this.abonnementForm.get('prix').value;
-    this.abonnement.description = this.abonnementForm.get('description').value;
-  }
-
-  fillFormBeforUpdating(abonnement){
-    this.abonnementForm.reset();
-    this.showCancelBtn = true;
-    this.currentAbonnementId = Number(abonnement.idAbonnement);
-    this.buttonAction = "Modifier";
-    this.abonnementForm.get('libelle').setValue(abonnement.libelle);
-    this.abonnementForm.get('periode').setValue(abonnement.periode);
-    this.abonnementForm.get('prix').setValue(abonnement.prix);
-    this.abonnementForm.get('description').setValue(abonnement.description);
-    window.scrollTo(0,0);
-  }
-
-  reset(){
-    this.buttonAction = "Enregistrer";
-    this.abonnementForm.reset();
-    this.showCancelBtn = false;
-    this.createLoad = false;
-    this.updateLoad = false;
-  }
-
-  submitAction(){
-    if (this.buttonAction === 'Modifier') {
-      this.updateAbonnement();
-    }
-    if (this.buttonAction === 'Enregistrer') {
-      this.createAbonnement();
-    }
-  }*/
-
 }

@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {AdminComponent} from './layout/admin/admin.component';
 import {AuthComponent} from './layout/auth/auth.component';
 import { BibliothequeComponent } from './layout/bibliotheque/bibliotheque.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -102,7 +103,9 @@ const routes: Routes = [
         loadChildren: () => import('./pages/gestion-bibliotheque/gestion-bibliotheque.module').then(m => m.GestionBibliothequeModule)
       }
     ]
-  }
+  },
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

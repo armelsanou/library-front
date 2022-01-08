@@ -1,0 +1,60 @@
+<!-- Navbar Start -->
+<app-simple-navbar></app-simple-navbar>
+<!-- Navbar End -->
+<br><br><br><br><br><br>
+
+<div class="main-body container col-md-12">
+    <div class="page-wrapper">
+        <app-title></app-title>
+        <app-breadcrumbs></app-breadcrumbs>
+    </div>
+</div>
+<div class="container" style="margin-bottom: 9rem!important" *ngIf="livre">
+    <div class="row no-gutters shadow-lg">
+        <div class="col-md-6 d-none d-md-block">
+            <img *ngIf="livre.image" src="{{imgSrc}}/{{livre.image}}"
+                class="img-fluid" style="min-height:100%;" />
+            <img *ngIf="!livre.image"
+                src="assets/images/none.png"
+                class="img-fluid" style="min-height:100%;" />
+        </div>
+        <div class="col-md-6 bg-white p-5">
+            <h3 class="pb-3 font-weight-bold">{{livre.titre}}</h3>
+            <p class="m-b-2 text-muted">Ecrit par: {{livre.auteur}}
+            <div class="form-style">
+                <form (ngSubmit)="emprunter()">
+
+                    <div class="sideline">CATEGORIE</div>
+                    <div class="form-group pb-3">
+                        <input type="text" class="form-control" value="{{livre.idCategorie.libelle}}" readonly>
+                    </div>
+
+                    <div class="sideline">ISBN</div>
+                    <div class="form-group pb-3">
+                        <input type="text" class="form-control" value="{{livre.isbn}}" readonly>
+                    </div>
+
+                    <div class="sideline">Date D'édition</div>
+                    <div class="form-group pb-3">
+                        <input type="text" class="form-control" value="{{livre.dateEdition}}" readonly>
+                    </div>
+                    
+                    <div class="sideline">DESCRIPTION</div>
+                    <div class="form-group pb-3">
+                        <textarea cols="30" rows="5" class="form-control" value="{{livre.description}}" readonly></textarea>
+                    </div>
+
+                    <div class="sideline">ETAT DU LIVRE</div>
+                    <div class="form-group pb-3">
+                        <input type="text" class="form-control" value="{{livre.idEtatLivre.etat}}" readonly>
+                    </div>
+
+                    <div class="pb-2">
+                        <button type="submit" class="btn btn-dark w-100 font-weight-bold mt-2">Emprunter</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

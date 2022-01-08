@@ -14,18 +14,17 @@ export class Interceptor implements HttpInterceptor {
   constructor(private userService: UserService, private router: Router, private settingService : SettingService, private sendNotificationService: SendNotificationService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("is called");
     if (req.method !== 'GET') {
-        return next.handle(req);
+      return next.handle(req);
     }
   
     if (this.userService.isLoggedIn()) {
-        req = req.clone({
-            setHeaders:
-                {Authorization: "yes is authorize",
-                }
+      req = req.clone({
+        setHeaders:
+            {Authorization: "yes is authorize",
             }
-        );
+        }
+      );
     }
 
     return next.handle(req) .do((event: HttpEvent<any>) => {
@@ -39,11 +38,11 @@ export class Interceptor implements HttpInterceptor {
             this.router.navigate(['auth/login/simple']);
           }
         }else{
-            this.userService.logout();
-            this.router.navigate(['auth/login/simple']);
-            this.settingService.option.title = "error";
-            this.settingService.option.msg = "Vous devez vous connecter pour continuer";
-            this.sendNotificationService.addToast(this.settingService.option, "error");
+          this.userService.logout();
+          this.router.navigate(['auth/login/simple']);
+          this.settingService.option.title = "error";
+          this.settingService.option.msg = "Vous devez vous connecter pour continuer";
+          this.sendNotificationService.addToast(this.settingService.option, "error");
         }
       }
     );

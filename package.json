@@ -57,6 +57,7 @@
     "ngx-echarts": "^2.0.2",
     "ngx-perfect-scrollbar": "^5.3.5",
     "peity": "^3.3.0",
+    "popper.js": "^1.16.1",
     "rxjs": "^6.5.2",
     "rxjs-compat": "^6.0.0-rc.0",
     "screenfull": "^3.3.2",

@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
       }
       window.scrollTo(0, 0);
     });
-    //this.goToHome();
+    this.goToHome();
+    localStorage.removeItem("cat");
   }
 
   goToHome(){

@@ -25,13 +25,6 @@ import {Observable} from 'rxjs';
   ]
 })
 export class LivreComponent implements OnInit {
-  editProfile = true;
-  editProfileIcon = 'icofont-edit';
-
-  editAbout = true;
-  editAboutIcon = 'icofont-edit';
-
-  public basicContent: string;
 
   public rowsOnPage = 12;
   public filterQuery = '';
@@ -100,11 +93,11 @@ export class LivreComponent implements OnInit {
         this.totalRecords = this.livres.length;
         if (this.totalRecords > 0) {
           this.isEmptyLivre = false;
+          this.getClickedCat();
         } else {
           this.isEmptyLivre = true;
         }
         this.loadLivres = false;
-        this.getClickedCat();
       },
       (err) => {
         this.error = 'Une erreur est survenue. Veuillez réessayer plus tard.';

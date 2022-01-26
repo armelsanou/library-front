@@ -4,6 +4,7 @@ import { UserService } from './../../services/servicesBibliotheque/user/user.ser
 import { AbonnementService } from './../../services/servicesBibliotheque/abonnement/abonnement.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import {animate, style, transition, trigger} from '@angular/animations';
 import swal from 'sweetalert2';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
@@ -11,7 +12,19 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   selector: 'app-abonnement',
   templateUrl: './abonnement.component.html',
   styleUrls: ['./abonnement.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  animations: [
+    trigger('fadeInOutTranslate', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate('400ms ease-in-out', style({opacity: 1}))
+      ]),
+      transition(':leave', [
+        style({transform: 'translate(0)'}),
+        animate('400ms ease-in-out', style({opacity: 0}))
+      ])
+    ])
+  ]
 })
 export class AbonnementComponent implements OnInit {
     

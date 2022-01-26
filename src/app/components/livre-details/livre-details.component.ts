@@ -71,26 +71,43 @@ export class LivreDetailsComponent implements OnInit {
               .emprunterLivre(this.isbn, this.user.idLecteur)
               .then(
                 (result: any) => {
-                  Swal.fire({
-                    type: 'success',
-                    title: "Le livre ayant pour code ISBN "+result.empruntPK.isbn+" a été emprunté avec succès! Date de remise "+result.dateRetourTheo,
-                    showConfirmButton: false,
-                    timer: 4000
-                  })
-                  Swal.hideLoading();
-                  this.settingService.option.title = "Emprunt réussi";
-                  this.router.navigate(['/components/livres/categorie/all']);
-                  this.settingService.option.msg =
-                    "Le livre ayant pour code ISBN "+result.empruntPK.isbn+" a été emprunté avec succès!"+" Date de remise "+result.dateRetourTheo;
-                    this.sendNotificationService.addToast(
-                    this.settingService.option,
-                    "success"
-                  );
+                  if (result) {
+                    Swal.fire({
+                      type: 'success',
+                      title: "Le livre ayant pour code ISBN "+result.empruntPK.isbn+" a été emprunté avec succès! Date de remise "+result.dateRetourTheo,
+                      showConfirmButton: false,
+                      timer: 4000
+                    });
+                    Swal.hideLoading();
+                    this.settingService.option.title = "Emprunt réussi";
+                    this.router.navigate(['/components/livres/categorie/all']);
+                    this.settingService.option.msg =
+                      "Le livre ayant pour code ISBN "+result.empruntPK.isbn+" a été emprunté avec succès!"+" Date de remise "+result.dateRetourTheo;
+                      this.sendNotificationService.addToast(
+                      this.settingService.option,
+                      "success"
+                    );
+                    localStorage.setItem("cat", "all");
+                  } else {
+                    Swal.fire({
+                      type: 'error',
+                      title: "Vous n'avez pas d'abonnement valide,veuillez souscrire ou renouveler.",
+                      showConfirmButton: false,
+                      timer: 4000
+                    });
+
+                    this.settingService.option.msg =
+                      "Vous n'avez pas d'abonnement valide,veuillez souscrire ou renouveler.";
+                      this.sendNotificationService.addToast(
+                      this.settingService.option,
+                      "warning"
+                    );
+                  }
                 },
                 (err) => {
                   Swal.fire(
                     "Une erreur est survenue!",
-                    "Une erreur est survenue, vous devez surement prendre un abonnement",
+                    "Une erreur est survenue, vous devez surement prendre un abonnement.",
                     "error"
                   );
                 }
